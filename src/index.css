@@ -334,6 +334,25 @@ h1, h2, h3, h4 {
   background: var(--accent-light);
 }
 
+.btn-elearning {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: white;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-elearning:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* --- Hero --- */
 .hero-v4 {
   padding: 14rem 0 10rem;
@@ -409,7 +428,7 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(10px);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 100px;
   font-weight: 800;
   transition: var(--transition);
 }
@@ -467,7 +486,7 @@ h1, h2, h3, h4 {
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 1.25rem;
+  border-radius: 100px;
   transition: var(--transition);
 }
 
@@ -482,7 +501,7 @@ h1, h2, h3, h4 {
   gap: 1rem;
   padding: 1.5rem;
   background: rgba(16, 185, 129, 0.1);
-  border-radius: 1.25rem;
+  border-radius: 2rem;
   border: 1px solid rgba(16, 185, 129, 0.1);
 }
 
@@ -494,7 +513,7 @@ h1, h2, h3, h4 {
   padding: 1.25rem 2.5rem;
   background: var(--accent);
   color: var(--primary);
-  border-radius: 12px;
+  border-radius: 100px;
   font-weight: 800;
   transition: var(--transition);
   font-size: 1.1rem;
