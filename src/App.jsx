@@ -638,7 +638,6 @@ const Navbar = () => {
           <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
           <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
           <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
-          <LanguageSwitcher />
           <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
             <div className="flex flex-col items-start leading-tight">
               <span className="text-sm font-black uppercase tracking-tight">{t('nav_elearning')}</span>
@@ -647,10 +646,11 @@ const Navbar = () => {
             <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform text-accent" />
           </a>
           <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
+          <LanguageSwitcher />
         </div>
         <div className="lg:hidden flex items-center gap-4">
-          <LanguageSwitcher />
           <button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button>
+          <LanguageSwitcher />
         </div>
       </div>
       <AnimatePresence>
