@@ -6,7 +6,7 @@ import {
   Clock, Euro, Award, Users, HardHat, Calendar, Star,
   Briefcase, Zap, Flame, UserCheck, FileText, BadgeCheck,
   Send, Quote, ChevronLeft, ExternalLink, MessageCircle, ArrowUp,
-  Target, GraduationCap, ThumbsUp, Facebook, Globe
+  Target, GraduationCap, ThumbsUp, Facebook, Globe, MonitorPlay
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
