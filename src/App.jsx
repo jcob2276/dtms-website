@@ -335,6 +335,18 @@ const DETAILED_SERVICES = [
     exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   },
   { 
+    id: "zapinacz", 
+    title: { pl: "Zapinacz hakowy sygnalista", en: "Slinger and Signaller", ua: "Стропальник та сигнальник" }, 
+    img: "/obrazy/zapinacz.jpg", 
+    summary: { pl: "Zasady transportu ładunków, dobór zawiesi i sygnalizacja.", en: "Principles of load transport, slinger selection, and signaling.", ua: "Принципи транспортування вантажів, підбір строп та сигналізація." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z prawidłowymi zasadami transportu ładunku za pomocą urządzeń dźwignicowych, doboru zawiesi oraz sygnałów porozumiewawcze z operatorem."),
+      en: "The training covers the correct principles of load transport using lifting equipment, selection of slings, and communication signals with the operator.",
+      ua: "Навчання охоплює правильні принципи транспортування вантажів за допомогою вантажопідйомного обладнання, підбір строп та сигнали зв'язку з оператором."
+    },
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN", en: "The course ends with an exam and a certificate in accordance with the MEN template", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN" }
+  },
+  { 
     id: "zurawie-przenosne", 
     title: { pl: "Żurawie przenośne (HDS)", en: "Truck-mounted cranes (HDS)", ua: "Крани-маніпулятори (HDS)" }, 
     img: "/obrazy/zurawp.jpeg", 
@@ -343,6 +355,114 @@ const DETAILED_SERVICES = [
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi przenośnych, przewoźnych i stacjonarnych. Dodatkowo umożliwia pracę na urządzeniach leśnych typu harwester i forwarder."),
       en: "Training covers all types of mobile, portable, and stationary cranes. Additionally, it enables work on forestry machines like harvesters and forwarders.",
       ua: "Навчання охоплює всі типи мобільних, переносних та стаціонарних кранів. Додатково дозволяє працювати на лісовій техніці типу харвестер та форвардер."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "zurawie-stacjonarne", 
+    title: { pl: "Żurawie stacjonarne", en: "Stationary Cranes", ua: "Стаціонарні крани" }, 
+    img: "/obrazy/zurawstacj.jpg", 
+    summary: { pl: "Żurawie warsztatowe, słupowe i przyścienne.", en: "Workshop, pillar, and wall-mounted cranes.", ua: "Майстерні, стовпові та настінні крани." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi stacjonarnych, słupowych, przyściennych, warsztatowych oraz z dwoma wysięgnikami."),
+      en: "The training covers certifications for all types of stationary, pillar, wall-mounted, workshop cranes and those with two jibs.",
+      ua: "Навчання включає сертифікацію на всі типи стаціонарних, стовпових, настінних, майстерень кранів та кранів з двома стрілами."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "wozki-unoszace", 
+    title: { pl: "Wózki unoszące", en: "Pallet Stackers", ua: "Навантажувачі, що піднімають (рохлі)" }, 
+    img: "/obrazy/wozkiuno.png", 
+    summary: { pl: "Bezpieczna obsługa wózków prowadzonych i elektrycznych paleciaków.", en: "Safe operation of walkie and electric pallet trucks.", ua: "Безпечна експлуатація ручних та електричних палетних візків." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z bezpieczną obsługą, eksploatacją, transportu ładunku oraz wymianę baterii w wózkach jezdniowych unoszących."),
+      en: "The training covers safe operation, use, load transport, and battery replacement in pallet stackers.",
+      ua: "Навчання охоплює безпечну експлуатацію, використання, транспортування вантажів та заміну акумуляторів у палетних навантажувачах."
+    },
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN.", en: "The course ends with an exam and a certificate in accordance with the MEN template.", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN." }
+  },
+  { 
+    id: "wymiana-butli", 
+    title: { pl: "Wymiana butli gazowych", en: "Gas Cylinder Exchange", ua: "Заміна газових балонів" }, 
+    img: "/obrazy/wymianabutli.jpg", 
+    summary: { pl: "Szkolenie z zakresu bezpiecznej eksploatacji i wymiany butli LPG.", en: "Training on safe operation and exchange of LPG cylinders.", ua: "Навчання з безпечної експлуатації та заміни балонів LPG." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje przygotowanie teoretyczne, praktyczne oraz zagrożenia występujące podczas eksploatacji i wymianie butli gazowych w wózkach jezdniowych."),
+      en: "The training includes theoretical and practical preparation as well as hazards occurring during operation and exchange of gas cylinders in industrial trucks.",
+      ua: "Навчання включає теоретичну та практичну підготовку, а також небезпеки, що виникають під час експлуатації та заміни газових балонів у промислових навантажувачах."
+    },
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN.", en: "The course ends with an exam and a certificate in accordance with the MEN template.", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN." }
+  },
+  { 
+    id: "zurawie-wiezowe", 
+    title: { pl: "Żurawie wieżowe", en: "Tower Cranes", ua: "Баштові крани" }, 
+    img: "/obrazy/zuraww.jpeg", 
+    summary: { pl: "Uprawnienia na żurawie wieżowe (dźwigi budowlane) i szybkomontujące.", en: "Certifications for tower cranes (construction cranes) and fast-erecting cranes.", ua: "Дозволи на баштові крани (будівельні крани) та швидкомонтовані крани." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi wieżowych, szynowych oraz szybkomontujących."),
+      en: "The training covers certifications for all types of tower, rail-mounted, and fast-erecting cranes.",
+      ua: "Навчання включає сертифікацію на всі типи баштових, рейкових та швидкомонтованих кранів."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "dzwigi-budowlane", 
+    title: { pl: "Dźwigi budowlane", en: "Construction Hoists", ua: "Будівельні підйомники" }, 
+    img: "/obrazy/dzwigb.jpg", 
+    summary: { pl: "Wciągarki i windy towarowo-osobowe na budowach.", en: "Winches and goods/passenger elevators on construction sites.", ua: "Лебідки та вантажопасажирські ліфти на будівельних майданчиках." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie dźwigi budowlane, towarowe, towarowo – osobowe oraz uprawnia do obsługi wyciągów towarowych."),
+      en: "The training covers certifications for all construction hoists, goods lifts, goods/passenger lifts, and authorizes the operation of goods hoists.",
+      ua: "Навчання включає сертифікацію на всі будівельні підйомники, вантажні ліфти, вантажопасажирські ліфти та дозволяє експлуатацію вантажних підйомників."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "zurawie-samojezdne", 
+    title: { pl: "Żurawie samojezdne", en: "Mobile Cranes", ua: "Самохідні крани" }, 
+    img: "/obrazy/zurawsamo.jpeg", 
+    summary: { pl: "Duże dźwigi kołowe i gąsienicowe.", en: "Large wheel and crawler cranes.", ua: "Великі колісні та гусеничні крани." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi samojezdnych, przenośnych, przewoźnych oraz stacjonarnych."),
+      en: "The training covers certifications for all types of mobile, truck-mounted, portable, and stationary cranes.",
+      ua: "Навчання включає сертифікацію на всі типи самохідних, автомобільних, переносних та стаціонарних кранів."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "wozki-platformowe", 
+    title: { pl: "Wózki platformowe", en: "Platform Trucks", ua: "Платформні навантажувачі" }, 
+    img: "/obrazy/wozkiplatf.jpg", 
+    summary: { pl: "Pojazdy transportowe i ciągniki akumulatorowe.", en: "Transport vehicles and battery-powered tractors.", ua: "Транспортні засоби та акумуляторні тягачі." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z obsługą, eksploatacją, transportem ładunku oraz wymianą baterii w wózkach jezdniowych platformowych, ciągnikowych i pchających."),
+      en: "The training covers operation, use, load transport, and battery replacement in platform, tractor, and pusher trucks.",
+      ua: "Навчання охоплює експлуатацію, використання, транспортування вантажів та заміну акумуляторів у платформних навантажувачах, тягачах та штовхачах."
+    },
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN.", en: "The course ends with an exam and a certificate in accordance with the MEN template.", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN." }
+  },
+  { 
+    id: "wyciagi-towarowe", 
+    title: { pl: "Wyciągi towarowe", en: "Goods Hoists", ua: "Вантажні підйомники" }, 
+    img: "/obrazy/wyciagtow.jpg", 
+    summary: { pl: "Urządzenia do pionowego transportu ładunków.", en: "Devices for vertical transport of loads.", ua: "Пристрої для вертикального транспортування вантажів." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z prawidłowymi zasadami obsługi, eksploatacji, montażu / demontażu urządzenia oraz bezpiecznego transportu ładunku."),
+      en: "The training covers the correct principles of operation, use, assembly/disassembly of the device, and safe load transport.",
+      ua: "Навчання охоплює правильні принципи експлуатації, використання, монтажу/демонтажу пристрою та безпечного транспортування вантажів."
+    },
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN (dla urządzeń do 250kg). Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego (dla urządzeń pow. 250kg).", en: "The course ends with an exam and a MEN certificate (for devices up to 250kg) or an UDT exam (for devices over 250kg).", ua: "Курс завершується іспитом та сертифікатом MEN (для пристроїв до 250 кг) або іспитом UDT (для пристроїв понад 250 кг)." }
+  },
+  { 
+    id: "dzwigi-tow-osobowe", 
+    title: { pl: "Dźwigi towarowo osobowe", en: "Goods and Passenger Lifts", ua: "Вантажопасажирські ліфти" }, 
+    img: "/obrazy/dzwigtow.jpg", 
+    summary: { pl: "Windy ze sterowaniem wewnętrznym i szpitalne.", en: "Elevators with internal control and hospital lifts.", ua: "Ліфти з внутрішнім керуванням та лікарняні ліфти." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje uprawnienia na dźwigi towarowo osobowe ze sterowaniem wewnętrznym oraz szpitalne."),
+      en: "The training covers certifications for goods and passenger lifts with internal control and hospital lifts.",
+      ua: "Навчання включає сертифікацію вантажопасажирських ліфтів з внутрішнім керуванням та лікарняних ліфтів."
     },
     exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   },
@@ -369,8 +489,21 @@ const DETAILED_SERVICES = [
       ua: "Навчання охоплює безпечну експлуатацію та процедури наповнення балонів стисненим газом. Дозволи включають балони для дихальних апаратів (дайвінг, пожежна служба тощо)."
     },
     exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
+  },
+  { 
+    id: "napelnianie-skroplone", 
+    title: { pl: "Napełnianie butli gazami skroplonymi", en: "Filling liquefied gas cylinders", ua: "Наповнення балонів скрапленим газом" }, 
+    img: "/obrazy/gutlehazy.png", 
+    summary: { pl: "Napełnianie butli LPG, klimatyzacji i gazów skroplonych.", en: "Filling LPG, air conditioning, and liquefied gas cylinders.", ua: "Наповнення балонів LPG, кондиціонування та скрапленого газу." },
+    desc: {
+      pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
+      en: "Training covers safe operation and filling procedures for liquefied gas cylinders. Includes cylinders for AC recovery, LPG, etc.",
+      ua: "Навчання охоплює безпечну експлуатацію та процедури наповнення балонів скрапленим газом. Включає балони для обслуговування кондиціонерів, LPG тощо."
+    },
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   }
 ]
+
 
 // --- Components ---
 
@@ -609,9 +742,9 @@ const Home = () => {
               </h1>
               <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">{t('hero_desc')}</p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <a href="tel:667677912" className="btn-primary px-8 py-5 text-center relative z-50 cursor-pointer">{t('hero_btn_enroll')} <ArrowRight size={20} /></a>
-                <a href="#oferta" className="btn-secondary px-8 py-5 text-center relative z-50 cursor-pointer">{t('hero_btn_offer')}</a>
+              <div className="flex flex-row flex-wrap gap-4 mb-12">
+                <a href="tel:667677912" className="btn-primary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_enroll')} <ArrowRight size={20} /></a>
+                <a href="#oferta" className="btn-secondary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_offer')}</a>
               </div>
             </motion.div>
 

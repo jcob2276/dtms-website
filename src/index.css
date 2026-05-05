@@ -578,6 +578,11 @@ h1, h2, h3, h4 {
 .p-8 { padding: 2rem !important; }
 .p-10 { padding: 2.5rem !important; }
 .p-12 { padding: 3rem !important; }
+.px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+.px-8 { padding-left: 2rem !important; padding-right: 2rem !important; }
+.py-3 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+.py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-5 { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; }
 .pt-32 { padding-top: 8rem !important; }
 .pt-48 { padding-top: 12rem !important; }
 .pb-24 { padding-bottom: 6rem !important; }
