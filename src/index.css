@@ -60,6 +60,24 @@ h1, h2, h3, h4 {
   .section {
     padding: 4rem 0;
   }
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-text span:last-child {
+    display: none;
+  }
+  .logo-group {
+    gap: 0.75rem;
+  }
+  .logo-group img {
+    height: 35px;
+  }
+  .nav-master {
+    height: 80px;
+  }
 }
 
 .section-dark-premium {
@@ -98,6 +116,15 @@ h1, h2, h3, h4 {
 .h-12 { height: 3rem !important; }
 .w-16 { width: 4rem !important; }
 .h-16 { height: 4rem !important; }
+
+@media (max-width: 768px) {
+  .bottom-8 { bottom: 1.5rem !important; }
+  .right-8 { right: 1.5rem !important; }
+  .w-16 { width: 3.5rem !important; }
+  .h-16 { height: 3.5rem !important; }
+  .w-12 { width: 2.75rem !important; }
+  .h-12 { height: 2.75rem !important; }
+}
 .w-10 { width: 2.5rem !important; }
 .h-10 { height: 2.5rem !important; }
 .w-64 { width: 16rem !important; }
@@ -158,7 +185,17 @@ h1, h2, h3, h4 {
   line-height: 1.5 !important;
   margin: 0 !important;
 }
-
+@media (max-width: 640px) {
+  .offer-card {
+    height: 280px !important;
+  }
+  .offer-card-overlay {
+    padding: 1.25rem !important;
+  }
+  .offer-card-title {
+    font-size: 1.1rem !important;
+  }
+}
 .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; }
 .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important; }
 .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important; }
@@ -522,6 +559,13 @@ h1, h2, h3, h4 {
   box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
+@media (max-width: 640px) {
+  .map-container-premium {
+    height: 300px;
+    border-radius: 1.5rem;
+  }
+}
+
 /* --- Grid Items Fix --- */
 .h-48 { height: 12rem !important; }
 .h-64 { height: 16rem !important; }
@@ -740,19 +784,13 @@ h1, h2, h3, h4 {
   transform: translateY(-50%) scale(1.1);
 }
 
-@media (max-width: 768px) {
-  .trust-card {
-    min-width: 100%;
-  }
-}
-
 @media (max-width: 1024px) {
-  .hero-v4-bg { display: none !important; }
   .text-5xl { font-size: 2.5rem !important; }
   .text-7xl { font-size: 3rem !important; }
 }
 
 @media (max-width: 768px) {
-  .grid-cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
-  .container { padding: 0 1.5rem !important; }
+  .trust-card {
+    min-width: 100%;
+  }
 }

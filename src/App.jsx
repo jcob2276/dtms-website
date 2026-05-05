@@ -1,14 +1,65 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { 
-  Phone, Mail, MapPin, ChevronRight, Menu, X, 
-  CheckCircle2, ArrowRight, ShieldCheck, 
+import {
+  Phone, Mail, MapPin, ChevronRight, Menu, X,
+  CheckCircle2, ArrowRight, ShieldCheck,
   Clock, Euro, Award, Users, HardHat, Calendar, Star,
   Briefcase, Zap, Flame, UserCheck, FileText, BadgeCheck,
   Send, Quote, ChevronLeft, ExternalLink, MessageCircle, ArrowUp,
   Target, GraduationCap, ThumbsUp, Facebook
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+
+// --- Advanced Production Helpers ---
+
+// 1. Error Boundary - zapobiega "białemu ekranowi śmierci"
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) { return { hasError: true }; }
+  componentDidCatch(error, errorInfo) { console.error("React Error:", error, errorInfo); }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-primary flex items-center justify-center p-8 text-center">
+          <div className="max-w-md">
+            <h2 className="text-4xl font-black text-white mb-4">Ups! Coś poszło nie tak.</h2>
+            <p className="text-white/60 mb-8">Wystąpił nieoczekiwany błąd aplikacji. Przepraszamy za utrudnienia.</p>
+            <button onClick={() => window.location.href = '/'} className="btn-primary w-full justify-center">
+              Wróć do strony głównej
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// 2. SEO & Analytics Tracker - obsługa metadanych i virtual page views
+const PageManager = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Dynamiczna aktualizacja tytułu i opisu (SEO)
+    const pageTitles = {
+      '/': 'DTMS - Profesjonalne Szkolenia UDT Krosno | Wózki Widłowe, Podesty',
+      '/uslugi': 'Oferta Szkoleń UDT - Wózki, Suwnice, HDS | DTMS Krosno',
+      '/polityka-prywatnosci': 'Polityka Prywatności | DTMS'
+    };
+
+    const currentTitle = pageTitles[location.pathname] || 'DTMS Szkolenia Techniczne';
+    document.title = currentTitle;
+
+    // Miejsce na wywołanie zdarzenia dla Google Analytics / Meta Pixel
+    // window.gtag('config', 'GA_MEASUREMENT_ID', {'page_path': location.pathname});
+    console.log(`[Analytics] Page View: ${location.pathname}`);
+  }, [location]);
+
+  return null;
+};
 
 // --- Helper for orphans (Sierotki) ---
 const fixOrphans = (text) => {
@@ -67,7 +118,7 @@ const CookieConsent = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div 
+        <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
@@ -81,12 +132,12 @@ const CookieConsent = () => {
               <div className="text-left">
                 <h4 className="text-white font-bold text-lg mb-1">Dbamy o Twoją prywatność</h4>
                 <p className="text-white/60 text-sm leading-relaxed max-w-2xl">
-                  Nasza strona wykorzystuje pliki cookies w celu poprawy komfortu użytkowania oraz analizy ruchu. 
+                  Nasza strona wykorzystuje pliki cookies w celu poprawy komfortu użytkowania oraz analizy ruchu.
                   Korzystając ze strony, wyrażasz zgodę na ich używanie zgodnie z naszą <Link to="/polityka-prywatnosci" className="text-accent hover:underline">Polityką Prywatności</Link>.
                 </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={accept}
               className="btn-primary whitespace-nowrap px-8 py-4 w-full md:w-auto justify-center"
             >
@@ -103,7 +154,7 @@ const FloatingContact = () => {
   const [showScrollTop, setShowScrollTop] = useState(false)
   useEffect(() => { const handleScroll = () => setShowScrollTop(window.scrollY > 500); window.addEventListener('scroll', handleScroll); return () => window.removeEventListener('scroll', handleScroll) }, [])
   return (
-    <div className="fixed bottom-8 left-8 flex flex-col gap-4 z-[2000] items-start">
+    <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 flex flex-col gap-4 z-[2000] items-end">
       <AnimatePresence>{showScrollTop && <motion.button initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center text-primary border border-slate-100 hover:bg-slate-50 transition-colors"><ArrowUp size={24} /></motion.button>}</AnimatePresence>
       <a href="tel:667677912" className="w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-white bg-accent hover:scale-110 transition-all duration-300">
         <Phone size={32} />
@@ -134,13 +185,13 @@ const GoogleReviewSlider = () => {
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false); const location = useLocation(); const navigate = useNavigate();
-  const handleContactClick = (e) => { 
-    e.preventDefault(); 
-    setMobileMenu(false); 
-    if (location.pathname !== '/') { 
-      navigate('/#kontakt'); 
-    } else { 
-      const element = document.getElementById('kontakt'); 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    setMobileMenu(false);
+    if (location.pathname !== '/') {
+      navigate('/#kontakt');
+    } else {
+      const element = document.getElementById('kontakt');
       if (element) {
         const offset = 100;
         const bodyRect = document.body.getBoundingClientRect().top;
@@ -149,7 +200,7 @@ const Navbar = () => {
         const offsetPosition = elementPosition - offset;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
-    } 
+    }
   }
   return (
     <nav className="nav-master">
@@ -161,9 +212,25 @@ const Navbar = () => {
           <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>Kontakt</a>
           <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
         </div>
-        <div className="lg:hidden"><button className="text-primary p-2" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={32} /> : <Menu size={32} />}</button></div>
+        <div className="lg:hidden"><button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button></div>
       </div>
-      <AnimatePresence>{mobileMenu && <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="absolute top-full left-0 w-full bg-white p-8 flex flex-col gap-6 shadow-2xl lg:hidden"><Link to="/" onClick={() => setMobileMenu(false)} className="text-xl font-bold">Start</Link><Link to="/uslugi" onClick={() => setMobileMenu(false)} className="text-xl font-bold">Nasze usługi</Link><a href="#kontakt" onClick={handleContactClick} className="text-xl font-bold">Kontakt</a><a href="tel:667677912" className="btn-phone-v4 justify-center">Zadzwoń: 667 677 912</a></motion.div>}</AnimatePresence>
+      <AnimatePresence>
+        {mobileMenu && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            exit={{ opacity: 0, y: -20 }} 
+            className="absolute top-full left-0 w-full bg-primary border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden shadow-2xl"
+          >
+            <Link to="/" onClick={() => setMobileMenu(false)} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">Start <ChevronRight size={20} /></Link>
+            <Link to="/uslugi" onClick={() => setMobileMenu(false)} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">Nasze usługi <ChevronRight size={20} /></Link>
+            <a href="#kontakt" onClick={handleContactClick} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">Kontakt <ChevronRight size={20} /></a>
+            <div className="mt-4 pt-6 border-t border-white/10">
+              <a href="tel:667677912" className="btn-phone-v4 justify-center py-5 text-lg">Zadzwoń: 667 677 912</a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
@@ -179,11 +246,11 @@ const ContactSection = () => (
       <div className="grid lg:grid-cols-2 gap-12 items-start">
         <div className="bg-slate-50 p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-100"><h3 className="text-3xl font-black mb-8 text-primary">Zadaj pytanie</h3><form className="flex flex-col gap-4"><div className="grid md:grid-cols-2 gap-4"><input type="text" placeholder="Imię i nazwisko" className="input-v4" required /><input type="tel" placeholder="Numer telefonu" className="input-v4" required /></div><input type="email" placeholder="Adres e-mail" className="input-v4" required /><select className="input-v4"><option>Interesujący Cię kurs</option>{DETAILED_SERVICES.map(s => <option key={s.id}>{s.title}</option>)}</select><textarea placeholder="Twoja wiadomość..." className="input-v4 min-h-[150px]" required></textarea><button type="submit" className="btn-primary w-full justify-center">Wyślij <Send size={18} /></button></form></div>
         <div className="flex flex-col gap-8">
-           <div className="grid md:grid-cols-2 gap-6">
-              <div className="contact-card-premium"><Phone className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">Infolinia</p><a href="tel:667677912" className="text-2xl font-black block text-white">667 677 912</a></div>
-              <div className="contact-card-premium"><Mail className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">E-mail</p><a href="mailto:fhudtms@poczta.fm" className="text-lg font-black block truncate text-white">fhudtms@poczta.fm</a></div>
-           </div>
-           <div className="map-container-premium relative"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.643033575641!2d21.75895781570119!3d49.68233777937762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473c4f743419082f%3A0xc3b83b3e6c38703a!2sIgnacego%20%C5%81ukasiewicza%2063%2C%2038-400%20Krosno!5e0!3m2!1spl!2spl!4v1664221000000!5m2!1spl!2spl" className="w-full h-full border-0" allowFullScreen="" loading="lazy"></iframe><div className="absolute top-6 left-6 p-5 bg-white/90 backdrop-blur rounded-2xl shadow-xl border border-white/20 max-w-[240px]"><div className="flex items-center gap-2 mb-2"><MapPin className="text-accent" size={16} /><span className="text-xs font-black text-primary uppercase tracking-wider">Lokalizacja</span></div><p className="text-sm text-slate-700 font-medium leading-relaxed">ul. Ignacego Łukasiewicza 63, 38-400 Krosno</p></div></div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="contact-card-premium"><Phone className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">Infolinia</p><a href="tel:667677912" className="text-2xl font-black block text-white">667 677 912</a></div>
+            <div className="contact-card-premium"><Mail className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">E-mail</p><a href="mailto:fhudtms@poczta.fm" className="text-lg font-black block truncate text-white">fhudtms@poczta.fm</a></div>
+          </div>
+          <div className="map-container-premium relative"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.643033575641!2d21.75895781570119!3d49.68233777937762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473c4f743419082f%3A0xc3b83b3e6c38703a!2sIgnacego%20%C5%81ukasiewicza%2063%2C%2038-400%20Krosno!5e0!3m2!1spl!2spl!4v1664221000000!5m2!1spl!2spl" className="w-full h-full border-0" allowFullScreen="" loading="lazy"></iframe><div className="absolute top-6 left-6 p-5 bg-white/90 backdrop-blur rounded-2xl shadow-xl border border-white/20 max-w-[240px]"><div className="flex items-center gap-2 mb-2"><MapPin className="text-accent" size={16} /><span className="text-xs font-black text-primary uppercase tracking-wider">Lokalizacja</span></div><p className="text-sm text-slate-700 font-medium leading-relaxed">ul. Ignacego Łukasiewicza 63, 38-400 Krosno</p></div></div>
         </div>
       </div>
     </div>
@@ -191,11 +258,11 @@ const ContactSection = () => (
 )
 
 const Home = () => {
-  const { hash } = useLocation(); 
-  useEffect(() => { 
-    if (hash === '#kontakt') { 
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash === '#kontakt') {
       setTimeout(() => {
-        const element = document.getElementById('kontakt'); 
+        const element = document.getElementById('kontakt');
         if (element) {
           const offset = 100;
           const bodyRect = document.body.getBoundingClientRect().top;
@@ -205,7 +272,7 @@ const Home = () => {
           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
       }, 500);
-    } 
+    }
   }, [hash]);
   return (
     <div>
@@ -214,28 +281,24 @@ const Home = () => {
         <div className="hero-v4-overlay"></div>
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="lg:col-span-7"
             >
-              <div className="hero-v4-badge">
-                <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                Ponad 15 lat doświadczenia
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">Profesjonalne <span className="text-accent">Szkolenia UDT</span> w Krośnie</h1>
+              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">Profesjonalne <span className="text-accent">Szkolenia UDT</span> w Krośnie</h1>
               <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">Zdobądź uprawnienia na wózki widłowe, podesty, suwnice i żurawie. Szkolimy na nowoczesnym sprzęcie z najwyższą zdawalnością.</p>
-              
-              <div className="flex flex-wrap gap-4 mb-12">
-                <a href="tel:667677912" className="btn-primary px-10 relative z-50 cursor-pointer">Zapisz się na kurs <ArrowRight size={20} /></a>
-                <a href="#oferta" className="btn-secondary px-10 relative z-50 cursor-pointer">Zobacz ofertę</a>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <a href="tel:667677912" className="btn-primary px-8 py-5 text-center relative z-50 cursor-pointer">Zapisz się na kurs <ArrowRight size={20} /></a>
+                <a href="#oferta" className="btn-secondary px-8 py-5 text-center relative z-50 cursor-pointer">Zobacz ofertę</a>
               </div>
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }} 
-              animate={{ opacity: 1, scale: 1 }} 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-5"
             >
@@ -246,7 +309,7 @@ const Home = () => {
                   </div>
                   <h3 className="text-2xl font-black text-white">Najbliższe kursy</h3>
                 </div>
-                
+
                 <div className="flex flex-col gap-3 mb-8">
                   {UPCOMING_COURSES.map((c, i) => (
                     <div key={i} className="upcoming-item-v4">
@@ -255,7 +318,7 @@ const Home = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="hero-card-footer">
                   <BadgeCheck size={24} className="text-emerald-400 shrink-0" />
                   <p className="text-sm text-white/70 font-medium">Możliwość zrobienia kursów ze środków EU po spełnieniu odpowiednich warunków.</p>
@@ -293,28 +356,28 @@ const Home = () => {
       <section className="section section-dark-premium py-32 relative overflow-hidden">
         {/* Dekoracyjny gradient */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/10 to-transparent"></div>
-        
+
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center text-left">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-accent/20 rounded-full text-accent mb-8 border border-accent/30">
                 <Flame size={20} className="animate-pulse" />
                 <span className="font-black text-sm uppercase tracking-widest text-accent">Oferta dla Jednostek Ratowniczych</span>
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-[1.1]">
                 Szkolenia dla <br className="hidden md:block" />
                 <span className="text-accent">Straży Pożarnej</span>
               </h2>
-              
+
               <p className="text-xl text-white opacity-90 mb-10 leading-relaxed max-w-xl">
                 Wspieramy jednostki OSP i PSP w podnoszeniu kwalifikacji technicznych ratowników. Oferujemy profesjonalne pakiety szkoleniowe z zakresu obsługi urządzeń transportu bliskiego.
               </p>
-              
+
               <div className="grid gap-5 mb-12">
                 {[
                   "Napełnianie butli powietrznych ODO",
@@ -330,23 +393,23 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-              
+
               <a href="tel:667677912" className="btn-primary px-12 py-5 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform inline-flex">
                 <Phone size={20} />
                 <span className="text-primary">ZAPYTAJ O OFERTĘ DLA OSP</span>
               </a>
             </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }} 
-              whileInView={{ opacity: 1, scale: 1 }} 
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative"
             >
               <div className="relative z-10 rounded-[3rem] overflow-hidden border-4 border-white/20 shadow-[0_0_50px_rgba(245,158,11,0.2)]">
                 <img src="/obrazy/strazak.png" alt="Szkolenia dla Strażaków" className="w-full h-auto" />
               </div>
-              
+
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/20 blur-[100px] rounded-full"></div>
               <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-red-600/10 blur-[100px] rounded-full"></div>
             </motion.div>
@@ -381,7 +444,7 @@ const Home = () => {
               <h4 className="text-2xl font-black mb-2">Spełniasz te warunki?</h4>
               <p className="opacity-70 text-lg">Zapisz się na najbliższy termin i zdobądź uprawnienia państwowe.</p>
             </div>
-            <a href="tel:667677912" className="btn-primary whitespace-nowrap">Zadzwoń: 667 677 912</a>
+            <a href="tel:667677912" className="btn-primary w-full md:w-auto text-center justify-center">Zadzwoń: 667 677 912</a>
           </div>
         </div>
       </section>
@@ -396,14 +459,14 @@ const Home = () => {
 const ServicesPage = () => {
   const { hash } = useLocation(); useEffect(() => { if (hash && hash !== '#kontakt') { const element = document.getElementById(hash.substring(1)); if (element) element.scrollIntoView({ behavior: 'smooth' }); } else if (!hash) { window.scrollTo(0, 0); } }, [hash]);
   return (
-    <div className="pt-48 pb-24 bg-white">
+    <div className="pt-32 md:pt-48 pb-24 bg-white">
       <div className="container">
-        <div className="mb-20 text-center"><h1 className="text-7xl font-black mb-6 text-primary">Wszystkie <span className="text-accent">Usługi</span></h1><p className="text-xl text-slate-500 max-w-2xl mx-auto">Pełen katalog szkoleń technicznych z uprawnieniami UDT oraz zaświadczeniami MEN.</p></div>
+        <div className="mb-12 md:mb-20 text-center"><h1 className="text-4xl sm:text-7xl font-black mb-6 text-primary">Wszystkie <span className="text-accent">Usługi</span></h1><p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto">Pełen katalog szkoleń technicznych z uprawnieniami UDT oraz zaświadczeniami MEN.</p></div>
         <div className="space-y-16">
           {DETAILED_SERVICES.map((s, i) => (
-            <motion.div key={i} id={s.id} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`p-8 md:p-12 bg-slate-50 rounded-[3rem] border border-slate-200 flex flex-col lg:flex lg:lg-row lg:lg:items-center gap-12 scroll-mt-32 ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
-              <div className="service-img-container rounded-3xl overflow-hidden shadow-xl border-4 border-white mx-auto lg:mx-0"><img src={s.img} className="w-full h-full object-cover" alt={s.title} /></div>
-              <div className="flex-1 text-left"><h3 className="text-4xl font-black mb-6 text-primary">{s.title}</h3><p className="text-lg text-slate-600 mb-8 leading-relaxed">{s.desc}</p><div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm"><BadgeCheck className="text-success shrink-0" size={24} /><p className="font-bold text-primary">{s.exam}</p></div></div>
+            <motion.div key={i} id={s.id} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`p-6 md:p-12 bg-slate-50 rounded-[2rem] md:rounded-[3rem] border border-slate-200 flex flex-col lg:flex-row lg:items-center gap-8 md:gap-12 scroll-mt-32 ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+              <div className="service-img-container rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border-2 md:border-4 border-white mx-auto lg:mx-0"><img src={s.img} className="w-full h-full object-cover" alt={s.title} /></div>
+              <div className="flex-1 text-left"><h3 className="text-2xl md:text-4xl font-black mb-4 md:mb-6 text-primary">{s.title}</h3><p className="text-base md:text-lg text-slate-600 mb-6 md:mb-8 leading-relaxed">{s.desc}</p><div className="flex items-start gap-4 p-4 md:p-5 bg-white rounded-xl md:rounded-2xl border border-slate-200 shadow-sm"><BadgeCheck className="text-success shrink-0" size={24} /><p className="font-bold text-primary text-sm md:text-base">{s.exam}</p></div></div>
             </motion.div>
           ))}
         </div>
@@ -415,9 +478,9 @@ const ServicesPage = () => {
 const PrivacyPolicy = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
-    <div className="pt-48 pb-24 bg-white">
+    <div className="pt-32 md:pt-48 pb-24 bg-white">
       <div className="container max-w-4xl">
-        <h1 className="text-5xl font-black mb-12 text-primary">Polityka prywatności</h1>
+        <h1 className="text-4xl md:text-5xl font-black mb-12 text-primary">Polityka prywatności</h1>
         <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-8 font-medium">
           <section>
             <h2 className="text-2xl font-bold text-primary mb-4">1. Informacje ogólne</h2>
@@ -458,7 +521,7 @@ const Footer = () => (
         {/* Kolumna 1: O nas & Social */}
         <div className="flex flex-col items-start">
           <Link to="/" className="logo-group mb-8">
-            <img src="/obrazy/logo białe .png" alt="DTMS" style={{ height: '70px' }} />
+            <img src="/obrazy/logo białe .png" alt="DTMS" className="h-12 md:h-16" />
             <div className="logo-text">
               <span className="text-white block text-xl font-black leading-none">DTMS</span>
               <span className="text-accent text-xs tracking-[0.2em] font-bold uppercase">Szkolenia Techniczne</span>
@@ -527,20 +590,26 @@ const Footer = () => (
 )
 
 const ScrollToTop = () => { const { pathname, hash } = useLocation(); useEffect(() => { if (!hash) window.scrollTo(0, 0) }, [pathname, hash]); return null; }
-const App = () => (
-  <Router>
-    <ScrollToTop />
-    <Navbar />
-    <main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/uslugi" element={<ServicesPage />} />
-        <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
-      </Routes>
-    </main>
-    <Footer />
-    <FloatingContact />
-    <CookieConsent />
-  </Router>
-)
+const App = () => {
+  return (
+    <ErrorBoundary>
+      <Router>
+        <ScrollToTop />
+        <PageManager />
+        <div className="relative overflow-x-hidden">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/uslugi" element={<ServicesPage />} />
+            <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
+          </Routes>
+          <Footer />
+          <FloatingContact />
+          <CookieConsent />
+        </div>
+      </Router>
+    </ErrorBoundary>
+  )
+}
+
 export default App
