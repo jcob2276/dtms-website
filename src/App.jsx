@@ -200,7 +200,10 @@ const LanguageProvider = ({ children }) => {
     localStorage.setItem('app-lang', lang);
   }, [lang]);
 
-  const t = (key) => translations[lang][key] || translations['pl'][key] || key;
+  const t = (key) => {
+    const langData = translations[lang] || translations['pl'];
+    return langData[key] || translations['pl'][key] || key;
+  };
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
       {children}
@@ -526,7 +529,7 @@ const Navbar = () => {
 }
 
 const ContactSection = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   return (
     <section className="section bg-white scroll-mt-32" id="kontakt">
       <div className="container">
