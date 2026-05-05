@@ -168,6 +168,7 @@ const Navbar = () => {
   )
 }
 
+const ContactSection = () => (
   <section className="section bg-white scroll-mt-32" id="kontakt">
     <div className="container">
       <div className="text-center mb-12 md:mb-20">
