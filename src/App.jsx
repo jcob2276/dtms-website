@@ -72,8 +72,8 @@ const translations = {
     label_phone: 'Infolinia',
     label_email: 'E-mail',
     label_location: 'Lokalizacja',
-    nav_elearning: 'Platforma E-learningowa DTMS',
-    elearning_note: 'Dostępna wyłącznie dla uczestników w trakcie szkolenia'
+    nav_elearning: 'Platforma E-learningowa',
+    elearning_note: 'Dostępna podczas kursu'
   },
   en: {
     nav_start: 'Home',
@@ -133,8 +133,8 @@ const translations = {
     label_phone: 'Hotline',
     label_email: 'E-mail',
     label_location: 'Location',
-    nav_elearning: 'DTMS E-learning Platform',
-    elearning_note: 'Available exclusively for participants during the training'
+    nav_elearning: 'E-learning Platform',
+    elearning_note: 'Available during course'
   },
   ua: {
     nav_start: 'Головна',
@@ -194,8 +194,8 @@ const translations = {
     label_phone: 'Гаряча лінія',
     label_email: 'Електронна пошта',
     label_location: 'Локація',
-    nav_elearning: 'E-learning платформа DTMS',
-    elearning_note: 'Доступна виключно для учасників під час навчання'
+    nav_elearning: 'E-learning платформа',
+    elearning_note: 'Доступно під час курсу'
   }
 };
 
@@ -639,11 +639,8 @@ const Navbar = () => {
           <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
           <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
           <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
-            <div className="flex flex-col items-start leading-tight">
-              <span className="text-sm font-black uppercase tracking-tight">{t('nav_elearning')}</span>
-              <span className="text-[11px] opacity-70 font-medium">{t('elearning_note')}</span>
-            </div>
-            <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform text-accent" />
+            <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
           </a>
           <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
           <LanguageSwitcher />
@@ -665,12 +662,12 @@ const Navbar = () => {
             <Link to="/uslugi" onClick={() => setMobileMenu(false)} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">{t('nav_services')} <ChevronRight size={20} /></Link>
             <a href="#kontakt" onClick={handleContactClick} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">{t('nav_contact')} <ChevronRight size={20} /></a>
             <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-4">
-              <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning justify-between w-full">
-                <div className="flex flex-col items-start">
-                  <span className="text-sm font-black uppercase">{t('nav_elearning')}</span>
-                  <span className="text-[10px] opacity-60">{t('elearning_note')}</span>
+              <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning justify-between w-full py-4">
+                <div className="flex items-center gap-3">
+                  <MonitorPlay size={20} className="text-accent" />
+                  <span className="text-base font-bold uppercase">{t('nav_elearning')}</span>
                 </div>
-                <ExternalLink size={20} />
+                <ChevronRight size={20} className="opacity-50" />
               </a>
               <a href="tel:667677912" className="btn-phone-v4 justify-center py-5 text-lg">{t('nav_call')}: 667 677 912</a>
             </div>
