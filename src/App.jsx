@@ -877,39 +877,63 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="section bg-slate-50">
-        <div className="container">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary mb-6">
+      <section className="section bg-white overflow-hidden relative">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(245,158,11,0.05),transparent)] pointer-events-none"></div>
+        <div className="container relative z-10">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-primary mb-8 tracking-tight">
               {t('req_title').split('{accent}')[0]}
               <span className="text-accent">{t('req_accent')}</span>
               {t('req_title').split('{accent}')[1]}
             </h2>
-            <div className="w-24 h-2 bg-accent mx-auto mb-8 rounded-full"></div>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto">{t('req_desc')}</p>
+            <div className="w-32 h-2.5 bg-accent mx-auto mb-10 rounded-full shadow-[0_4px_15px_rgba(245,158,11,0.3)]"></div>
+            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">{t('req_desc')}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-3 gap-10">
             {[
-              { icon: <UserCheck size={40} />, title: t('req_age_title'), desc: t('req_age_desc') },
-              { icon: <GraduationCap size={40} />, title: t('req_edu_title'), desc: t('req_edu_desc') },
-              { icon: <ShieldCheck size={40} />, title: t('req_health_title'), desc: t('req_health_desc') }
+              { icon: <UserCheck size={48} />, title: t('req_age_title'), desc: t('req_age_desc'), gradient: 'from-blue-500/10 to-blue-500/0' },
+              { icon: <GraduationCap size={48} />, title: t('req_edu_title'), desc: t('req_edu_desc'), gradient: 'from-accent/10 to-accent/0' },
+              { icon: <ShieldCheck size={48} />, title: t('req_health_title'), desc: t('req_health_desc'), gradient: 'from-emerald-500/10 to-emerald-500/0' }
             ].map((req, i) => (
-              <div key={i} className="p-10 bg-white rounded-[2.5rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all group">
-                <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all">
-                  {req.icon}
+              <motion.div 
+                key={i} 
+                whileHover={{ y: -10 }}
+                className="relative p-12 bg-slate-50 rounded-[3.5rem] border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] transition-all overflow-hidden group"
+              >
+                <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${req.gradient} rounded-full -mr-20 -mt-20 opacity-50 group-hover:scale-150 transition-transform duration-700`}></div>
+                
+                <div className="relative z-10">
+                  <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center text-accent mb-10 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                    {req.icon}
+                  </div>
+                  <h3 className="text-3xl font-black text-primary mb-6">{req.title}</h3>
+                  <p className="text-slate-500 text-lg leading-relaxed font-medium">{req.desc}</p>
                 </div>
-                <h3 className="text-2xl font-black text-primary mb-4">{req.title}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed">{req.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-          <div className="mt-16 p-8 bg-primary rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-left text-white">
-              <h4 className="text-2xl font-black mb-2">{t('req_ready')}</h4>
-              <p className="opacity-70 text-lg">{t('req_ready_desc')}</p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-20 p-10 md:p-16 bg-primary rounded-[4rem] relative overflow-hidden shadow-2xl shadow-primary/20"
+          >
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/20 to-transparent"></div>
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/10 blur-[80px] rounded-full"></div>
+            
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+              <div className="text-center lg:text-left">
+                <h4 className="text-3xl md:text-4xl font-black text-white mb-4">{t('req_ready')}</h4>
+                <p className="text-white/70 text-xl font-medium max-w-xl">{t('req_ready_desc')}</p>
+              </div>
+              <a href="tel:667677912" className="btn-primary px-12 py-6 text-xl shadow-2xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all">
+                <Phone size={24} />
+                <span>{t('nav_call')}: 667 677 912</span>
+              </a>
             </div>
-            <a href="tel:667677912" className="btn-phone-v4 w-full md:w-auto text-center justify-center py-5 px-10 text-lg">{t('nav_call')}: 667 677 912</a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
