@@ -12,6 +12,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import ServiceArea from './components/sections/ServiceArea'
 import { SERVICE_REGIONS, ZIP_CODES } from './constants/serviceArea'
+import { HIDDEN_SEMANTICS } from './constants/seoKeywords'
 
 // --- Language Context ---
 const LanguageContext = createContext();
@@ -480,6 +481,34 @@ const PageManager = () => {
     }
 
     document.title = title;
+    
+    // 3. Keywords & Description injection
+    const updateMeta = (name, content) => {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.name = name;
+        document.head.appendChild(el);
+      }
+      el.content = content;
+    };
+
+    let keywords = [...HIDDEN_SEMANTICS.global];
+    if (path.includes('wozki')) keywords = [...keywords, ...HIDDEN_SEMANTICS.categories.wozki];
+    if (path.includes('podest')) keywords = [...keywords, ...HIDDEN_SEMANTICS.categories.podest];
+    if (path.includes('zuraw')) keywords = [...keywords, ...HIDDEN_SEMANTICS.categories.zuraw];
+    if (path.includes('suwnic')) keywords = [...keywords, ...HIDDEN_SEMANTICS.categories.suwnice];
+    if (path.includes('napelnianie')) keywords = [...keywords, ...HIDDEN_SEMANTICS.categories.napelnianie];
+
+    updateMeta('keywords', keywords.join(', '));
+    
+    const descriptions = {
+      pl: "Profesjonalne szkolenia techniczne UDT w Krośnie i na Podkarpaciu. Kursy na wózki widłowe, podesty, suwnice i żurawie. Najwyższa zdawalność i nowoczesny sprzęt.",
+      en: "Professional technical UDT training in Krosno. Forklift, platform, and crane courses. High pass rates and modern equipment.",
+      ua: "Професійне технічне навчання UDT у Кросно. Курси на навантажувачі, підйомники та крани. Висока успішність та сучасне обладнання."
+    };
+    updateMeta('description', descriptions[lang] || descriptions.pl);
+
     console.log(`[SEO] Updated for: ${path} [${lang}]`);
   }, [location, lang]);
 
