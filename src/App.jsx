@@ -744,9 +744,9 @@ const DETAILED_SERVICES = [
     id: "napelnianie-skroplone", 
     title: { pl: "Napełnianie butli gazami skroplonymi", en: "Filling liquefied gas cylinders", ua: "Наповнення балонів скрапленим газом" }, 
     img: "/obrazy/gutlehazy.png", 
-    summary: { pl: "Napełnianie butli metodą przelewowo wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling cylinders using the overflow weighing method, including recovery from air conditioning and LPG.", ua: "Наповнення балонів методом переливу та зважування, включаючи рекуперацію з кондиціонерів та LPG." },
+    summary: { pl: "Napełnianie butli metodą przelewowo-wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling cylinders using the overflow weighing method, including recovery from air conditioning and LPG.", ua: "Наповнення балонів методом переливу та зважування, включаючи рекуперацію з кондиціонерів та LPG." },
     desc: {
-      pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
+      pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo-wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
       en: "Training covers safe operation and filling procedures for liquefied gas cylinders using the overflow weighing method. Includes cylinders for AC recovery and filling, LPG, etc.",
       ua: "Навчання охоплює безпечну експлуатацію та процедури наповнення балонів скрапленим газом методом переливу та зважування. Включає балони для обслуговування кондиціонерів, LPG тощо."
     },
