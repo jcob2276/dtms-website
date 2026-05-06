@@ -502,6 +502,14 @@ const PageManager = () => {
   const { lang } = useTranslation();
 
   useEffect(() => {
+    // 0. GA4 Page View tracking for SPA
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'AW-10994185310', {
+        page_path: location.pathname + location.search
+      });
+      console.log(`[GA4] PageView: ${location.pathname}`);
+    }
+
     // 1. Hreflang Tags injection
     const baseUrl = "https://szkoleniadtms.pl";
     const languages = ['pl', 'en', 'ua'];
