@@ -877,28 +877,28 @@ const Navbar = () => {
       </div>
       <AnimatePresence>
         {mobileMenu && (
-          <>
+          <div className="fixed inset-0 z-[3000] lg:hidden">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenu(false)}
-              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[1998] lg:hidden"
+              className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
             />
             <motion.div 
               initial={{ x: '100%' }} 
               animate={{ x: 0 }} 
               exit={{ x: '100%' }} 
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-[#0F172A] z-[1999] lg:hidden shadow-2xl p-0 flex flex-col overflow-hidden"
+              className="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-[#0F172A] shadow-2xl flex flex-col overflow-hidden"
             >
-              <div className="p-8 pb-4 flex justify-between items-center bg-slate-950/50 border-b border-white/5">
-                <div className="logo-group">
+              <div className="p-6 flex justify-between items-center border-b border-white/5 bg-slate-900/50">
+                <div className="logo-group scale-90 origin-left">
                   <img src="/obrazy/logo białe .png" alt="DTMS" className="h-10" />
                 </div>
                 <button 
                   onClick={() => setMobileMenu(false)}
-                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white hover:bg-accent transition-all"
+                  className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white hover:bg-accent transition-all"
                 >
                   <X size={28} />
                 </button>
@@ -906,28 +906,28 @@ const Navbar = () => {
 
               <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">{t('nav_services')}</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Menu Główne</p>
                   <div className="flex flex-col gap-3">
                     {[
-                      { to: "/", icon: <ArrowRight size={20} />, label: t('nav_start') },
-                      { to: "/uslugi", icon: <ArrowRight size={20} />, label: t('nav_services') },
-                      { to: "#kontakt", icon: <ArrowRight size={20} />, label: t('nav_contact'), onClick: handleContactClick }
+                      { to: "/", label: t('nav_start') },
+                      { to: "/uslugi", label: t('nav_services') },
+                      { to: "#kontakt", label: t('nav_contact'), onClick: handleContactClick }
                     ].map((item, i) => (
                       <Link 
                         key={i}
                         to={item.to} 
                         onClick={item.onClick || (() => setMobileMenu(false))} 
-                        className="flex items-center justify-between p-5 rounded-2xl bg-white/5 text-lg font-bold text-white hover:bg-accent hover:translate-x-2 transition-all border border-white/5"
+                        className="flex items-center justify-between p-5 rounded-2xl bg-white/5 text-lg font-bold text-white hover:bg-accent transition-all border border-white/5 group"
                       >
                         <span>{item.label}</span>
-                        <ArrowRight size={18} className="opacity-40" />
+                        <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                       </Link>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-4">
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Dodatki</p>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Strefa Kursanta</p>
                   <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-accent/10 border border-accent/20 text-white group">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent">
@@ -946,7 +946,7 @@ const Navbar = () => {
                 </a>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </nav>
