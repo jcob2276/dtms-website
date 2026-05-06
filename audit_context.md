@@ -57,9 +57,9 @@ Strona jest zbudowana jako **Single Page Application (SPA)**, co oznacza, że po
 
 ## 5. Roadmapa Rozwoju (Co testujemy dalej?)
 
-### KROK 1: PWA (Progressive Web App)
-- **Zadanie:** Dodanie `manifest.json`.
-- **Cel:** Ikona DTMS na pulpicie telefonu użytkownika.
+### KROK 1: PWA (Progressive Web App - Wdrożone!)
+- **Zadanie:** Dodanie `manifest.json` oraz `sw.js`.
+- **Cel:** Ikona DTMS na pulpicie telefonu użytkownika i obsługa offline.
 
 ### KROK 2: Skeleton Loaders (Wdrożone!)
 - **Zadanie:** Implementacja "szkieletów" zamiast loading spinnerów w sekcji Oferta.
