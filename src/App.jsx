@@ -247,35 +247,120 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-// 2. SEO & Analytics Tracker - obsługa metadanych i virtual page views
+// 1.5. Structured Data (JSON-LD) for SEO
+const StructuredData = () => {
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DTMS Szkolenia Techniczne",
+    "image": "https://szkoleniadtms.pl/obrazy/logo%20bia%C5%82e%20.png",
+    "@id": "https://szkoleniadtms.pl",
+    "url": "https://szkoleniadtms.pl",
+    "telephone": "+48667677912",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ignacego Łukasiewicza 63",
+      "addressLocality": "Krosno",
+      "postalCode": "38-400",
+      "addressCountry": "PL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.68233777937762,
+      "longitude": 21.75895781570119
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/Szkoleniadtms/"
+    ]
+  };
+
+  const courseSchemas = DETAILED_SERVICES.map(s => ({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": s.title.pl,
+    "description": s.summary.pl,
+    "provider": {
+      "@type": "Organization",
+      "name": "DTMS Szkolenia Techniczne",
+      "sameAs": "https://szkoleniadtms.pl"
+    }
+  }));
+
+  return (
+    <script type="application/ld+json">
+      {JSON.stringify([businessSchema, ...courseSchemas])}
+    </script>
+  );
+};
+
+// 1.8. Local SEO Data
+const SUPPORTED_CITIES = [
+  { id: 'krosno', name: 'Krosno', distance: 0 },
+  { id: 'jaslo', name: 'Jasło', distance: 25 },
+  { id: 'sanok', name: 'Sanok', distance: 45 },
+  { id: 'rzeszow', name: 'Rzeszów', distance: 60 },
+  { id: 'gorlice', name: 'Gorlice', distance: 50 },
+  { id: 'brzozow', name: 'Brzozów', distance: 20 }
+];
+
+// 2. SEO & Analytics Tracker - obsługa metadanych, hreflang i programmatic SEO
 const PageManager = () => {
   const location = useLocation();
   const { lang } = useTranslation();
 
   useEffect(() => {
-    // Dynamiczna aktualizacja tytułu i opisu (SEO)
-    const pageTitles = {
-      'pl': {
-        '/': 'DTMS - Profesjonalne Szkolenia UDT Krosno | Wózki Widłowe, Podesty',
-        '/uslugi': 'Oferta Szkoleń UDT - Wózki, Suwnice, HDS | DTMS Krosno',
-        '/polityka-prywatnosci': 'Polityka Prywatności | DTMS'
-      },
-      'en': {
-        '/': 'DTMS - Professional UDT Training Krosno | Forklifts, Platforms',
-        '/uslugi': 'UDT Training Offer - Forklifts, Cranes | DTMS Krosno',
-        '/polityka-prywatnosci': 'Privacy Policy | DTMS'
-      },
-      'ua': {
-        '/': 'DTMS - Професійне навчання UDT Кросно | Навантажувачі, Підйомники',
-        '/uslugi': 'Пропозиція навчання UDT - Навантажувачі, Крани | DTMS Кросно',
-        '/polityka-prywatnosci': 'Політика конфіденційності | DTMS'
-      }
-    };
+    // 1. Hreflang Tags injection
+    const baseUrl = "https://szkoleniadtms.pl";
+    const languages = ['pl', 'en', 'ua'];
+    
+    // Remove existing hreflangs to avoid duplicates
+    document.querySelectorAll('link[hreflang]').forEach(el => el.remove());
+    
+    languages.forEach(l => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${baseUrl}${location.pathname}?lang=${l}`;
+      document.head.appendChild(link);
+    });
 
-    const currentTitle = pageTitles[lang]?.[location.pathname] || 'DTMS Szkolenia Techniczne';
-    document.title = currentTitle;
+    const xDefault = document.createElement('link');
+    xDefault.rel = 'alternate';
+    xDefault.hreflang = 'x-default';
+    xDefault.href = `${baseUrl}${location.pathname}`;
+    document.head.appendChild(xDefault);
 
-    console.log(`[Analytics] Page View: ${location.pathname} [${lang}]`);
+    // 2. Dynamic Title & Description
+    const path = location.pathname;
+    let title = "DTMS - Szkolenia Techniczne UDT";
+    
+    // Check for Programmatic City Pages
+    const cityMatch = SUPPORTED_CITIES.find(c => path.includes(`kursy-udt-${c.id}`));
+    
+    if (cityMatch) {
+      const cityTitle = {
+        pl: `Szkolenia UDT ${cityMatch.name} - Kursy na Wózki Widłowe, Suwnice | DTMS`,
+        en: `UDT Training ${cityMatch.name} - Forklift & Crane Courses | DTMS`,
+        ua: `Навчання UDT ${cityMatch.name} - Курси на навантажувачі | DTMS`
+      };
+      title = cityTitle[lang] || cityTitle.pl;
+    } else if (path === '/uslugi') {
+      const titles = { pl: 'Oferta Szkoleń UDT - Wózki, Suwnice, HDS | DTMS Krosno', en: 'UDT Training Offer - Forklifts, Cranes | DTMS Krosno', ua: 'Пропозиція навчання UDT - Навантажувачі, Крани | DTMS Кросно' };
+      title = titles[lang] || titles.pl;
+    } else if (path === '/') {
+      const titles = { pl: 'DTMS - Profesjonalne Szkolenia UDT Krosno | Wózki Widłowe, Podesty', en: 'DTMS - Professional UDT Training Krosno | Forklifts, Platforms', ua: 'DTMS - Професійне навчання UDT Кросно | Навантажувачі, Підйомники' };
+      title = titles[lang] || titles.pl;
+    }
+
+    document.title = title;
+    console.log(`[SEO] Updated for: ${path} [${lang}]`);
   }, [location, lang]);
 
   return null;
@@ -721,7 +806,7 @@ const ContactSection = () => {
   )
 }
 
-const Home = () => {
+const Home = ({ city }) => {
   const { hash } = useLocation();
   const { t, lang } = useTranslation();
   useEffect(() => {
@@ -753,11 +838,29 @@ const Home = () => {
               className="lg:col-span-7"
             >
               <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">
-                {t('hero_title').split('{accent}')[0]}
-                <span className="text-accent">{t('hero_accent')}</span>
-                {t('hero_title').split('{accent}')[1]}
+                {city ? (
+                  <>
+                    {lang === 'pl' && <>Szkolenia UDT <span className="text-accent">{city.name}</span> - Kursy i Uprawnienia</>}
+                    {lang === 'en' && <>UDT Training <span className="text-accent">{city.name}</span> - Get Certified</>}
+                    {lang === 'ua' && <>Навчання UDT <span className="text-accent">{city.name}</span> - Сертифікація</>}
+                  </>
+                ) : (
+                  <>
+                    {t('hero_title').split('{accent}')[0]}
+                    <span className="text-accent">{t('hero_accent')}</span>
+                    {t('hero_title').split('{accent}')[1]}
+                  </>
+                )}
               </h1>
-              <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">{t('hero_desc')}</p>
+              <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">
+                {city ? (
+                  <>
+                    {lang === 'pl' && `Profesjonalne kursy na wózki widłowe, podesty i żurawie dla mieszkańców miasta ${city.name} i okolic. Tylko ${city.distance} km do naszego ośrodka w Krośnie!`}
+                    {lang === 'en' && `Professional training for forklifts, platforms and cranes for residents of ${city.name}. Only ${city.distance} km to our center in Krosno!`}
+                    {lang === 'ua' && `Професійні курси на навантажувачі та крани для мешканців ${city.name}. Всього ${city.distance} км до нашого центру в Кросно!`}
+                  </>
+                ) : t('hero_desc')}
+              </p>
 
               <div className="flex flex-row flex-wrap gap-4 mb-12">
                 <a href="tel:667677912" className="btn-primary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_enroll')} <ArrowRight size={20} /></a>
@@ -1107,6 +1210,7 @@ const App = () => {
     <ErrorBoundary>
       <LanguageProvider>
         <Router>
+          <StructuredData />
           <ScrollToTop />
           <PageManager />
           <div className="relative overflow-x-hidden">
@@ -1114,6 +1218,9 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/uslugi" element={<ServicesPage />} />
+              {SUPPORTED_CITIES.map(city => (
+                <Route key={city.id} path={`/kursy-udt-${city.id}`} element={<Home city={city} />} />
+              ))}
               <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
             </Routes>
             <Footer />
