@@ -10,6 +10,8 @@ import {
   Target, GraduationCap, ThumbsUp, Facebook, Globe, MonitorPlay
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import ServiceArea from './components/sections/ServiceArea'
+import { SERVICE_REGIONS, ZIP_CODES } from './constants/serviceArea'
 
 // --- Language Context ---
 const LanguageContext = createContext();
@@ -398,7 +400,15 @@ const StructuredData = () => {
     },
     "sameAs": [
       "https://www.facebook.com/Szkoleniadtms/"
-    ]
+    ],
+    "areaServed": SERVICE_REGIONS.map(region => ({
+      "@type": "AdministrativeArea",
+      "name": region.name
+    })).concat(ZIP_CODES.map(zip => ({
+      "@type": "PostalAddress",
+      "postalCode": zip,
+      "addressCountry": "PL"
+    })))
   };
 
   const courseSchemas = DETAILED_SERVICES.map(s => ({
@@ -1132,6 +1142,7 @@ const Home = ({ city }) => {
       </section>
 
       <GoogleReviewSlider />
+      <ServiceArea />
       <ContactSection />
     </div>
   )
