@@ -59,7 +59,7 @@ const translations = {
     contact_form_course: 'Interesujący Cię kurs',
     contact_form_msg: 'Twoja wiadomość...',
     contact_form_send: 'Wyślij',
-    footer_about: 'Najlepszy ośrodek szkolenia operatorów urządzeń transportu bliskiego w regionie. Profesjonalizm, nowoczesny sprzęt i najwyższa zdawalność.',
+    footer_about: '',
     footer_office: 'Biuro i Zapisy',
     footer_office_desc: 'Zapisy telefoniczne oraz biuro obsługi czynne od poniedziałku do piątku w godzinach 8:00 - 18:00.',
     footer_call_btn: 'ZADZWOŃ I ZAPISZ SIĘ',
@@ -120,7 +120,7 @@ const translations = {
     contact_form_course: 'Interested course',
     contact_form_msg: 'Your message...',
     contact_form_send: 'Send',
-    footer_about: 'The best training center for materials handling equipment operators in the region. Professionalism, modern equipment, and top pass rates.',
+    footer_about: '',
     footer_office: 'Office & Enrollment',
     footer_office_desc: 'Telephone registration and office open Monday to Friday from 8:00 AM to 6:00 PM.',
     footer_call_btn: 'CALL AND ENROLL',
@@ -181,7 +181,7 @@ const translations = {
     contact_form_course: 'Курс, що вас цікавить',
     contact_form_msg: 'Ваше повідомлення...',
     contact_form_send: 'Надіслати',
-    footer_about: 'Найкращий навчальний центр для операторів підйомно-транспортного обладнання в регіоні. Професіоналізм, сучасне обладнання та високі показники успішності.',
+    footer_about: '',
     footer_office: 'Офіс та реєстрація',
     footer_office_desc: 'Телефонна реєстрація та офіс працюють з понеділка по п’ятницю з 8:00 до 18:00.',
     footer_call_btn: 'ЗАТЕЛЕФОНУВАТИ ТА ЗАПИСАТИСЯ',
@@ -370,70 +370,7 @@ const GoogleReviewSlider = () => {
   );
 };
 
-const CertificationSection = () => {
-  const { lang, t } = useTranslation();
-  return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary font-black text-[10px] mb-6 uppercase tracking-widest">
-              <Award size={12} className="text-accent" />
-              <span>Certyfikowany Ośrodek Szkoleniowy</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 tracking-tight">
-              {lang === 'pl' && <>Potwierdzona <span className="text-accent">Jakość</span> Szkoleń</>}
-              {lang === 'en' && <>Certified <span className="text-accent">Quality</span> of Training</>}
-              {lang === 'ua' && <>Підтверджена <span className="text-accent">якість</span> навчання</>}
-            </h2>
-            <p className="text-slate-600 text-xl leading-relaxed mb-10 font-medium">
-              {lang === 'pl' && "Posiadamy certyfikat ISO oraz uprawnienia do prowadzenia szkoleń technicznych na najwyższym poziomie. Nasza kadra to doświadczeni instruktorzy z wieloletnim stażem."}
-              {lang === 'en' && "We hold ISO certification and authorization to conduct technical training at the highest level. Our staff consists of experienced instructors with years of practice."}
-              {lang === 'ua' && "Ми маємо сертифікат ISO та дозвіл на проведення технічного навчання на найвищому рівні. Наш персонал — це досвідчені інструктори з багаторічним стажем."}
-            </p>
-            <div className="flex flex-col gap-4">
-              {[
-                { pl: "Certyfikat Jakości ISO", en: "ISO Quality Certificate", ua: "Сертифікат якості ISO" },
-                { pl: "Akredytacja UDT", en: "UDT Accreditation", ua: "Акредитація UDT" },
-                { pl: "Znak Jakości Małopolskich Usług Edukacyjnych", en: "Educational Quality Mark", ua: "Знак якості освітніх послуг" }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
-                    <CheckCircle2 size={20} />
-                  </div>
-                  <span className="font-black text-primary text-lg">{item[lang] || item.pl}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full"></div>
-            <div className="relative p-4 bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 transform hover:rotate-1 transition-transform duration-500">
-              <img 
-                src="/obrazy/certyfikat.jpg" 
-                alt="Certyfikat DTMS" 
-                className="w-full h-auto rounded-[2rem] shadow-inner"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-full flex items-center justify-center border-8 border-white shadow-xl">
-                <Award size={48} className="text-accent" />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
+
 
 // 1.5. Structured Data (JSON-LD) for SEO
 const StructuredData = () => {
@@ -605,7 +542,7 @@ const UPCOMING_COURSES = [
     date: "13.05.2026" 
   },
   { 
-    title: { pl: "Napełnianie butli skroplonych i sprężonych", en: "Filling Liquefied & Compressed Cylinders", ua: "Наповнення балонів скрапленим і стисненим газом" }, 
+    title: { pl: "Napełnianie butli metodą przelewowo-wagową", en: "Filling Cylinders - Overflow-Weighing Method", ua: "Наповнення балонів методом переливу та зважування" }, 
     date: "20.05.2026" 
   }
 ]
@@ -621,25 +558,25 @@ const DETAILED_SERVICES = [
       en: "The training covers all types of industrial trucks (forklifts cat. II WJO) with combustion or battery drive. Additionally, each trainee is trained in safe operation, use of gas cylinders and their safe replacement.",
       ua: "Навчання охоплює всі типи автонавантажувачів (категорія II WJO) з двигуном внутрішнього згоряння або акумуляторним приводом. Крім того, кожен слухач проходить навчання з безпечної експлуатації та заміни газових балонів."
     }, 
-    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego", en: "The course ends with an exam before the state commission of the Office of Technical Inspection", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду" }
+    exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   },
   { 
     id: "wozki-i-wjo", 
     title: { pl: "Wózki jezdniowe specjalizowane kat. I WJO", en: "Specialized Forklifts cat. I WJO", ua: "Навантажувачі спеціалізовані кат. I WJO" }, 
     img: "/obrazy/wozek2.jpg", 
-    summary: { pl: "Ładowarki teleskopowe oraz wózki z operatorem podnoszonym do góry.", en: "Telehandlers and lift trucks with the operator raising with the load.", ua: "Телескопічні навантажувачі та навантажувачі, де оператор піднімається разом з вантажем." },
-    desc: {
+    summary: { pl: "Ładowarki teleskopowe oraz wózki ze zmiennym wysięgiem.", en: "Telehandlers and reach trucks.", ua: "Телескопічні навантажувачі та навантажувачі зі змінним вильотом." },
+    desc: { 
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy wózków jezdniowych (widłowych kat. I WJO) z napędem spalinowym, akumulatorowym ze zmiennym wysięgiem oraz operatorem podnoszonym do góry wraz z ładunkiem. Dodatkowo każdy kursant zostaje przeszkolony i otrzymuje zaświadczenie z zakresu bezpiecznej eksploatacji, użytkowania butli gazowej oraz jej bezpiecznej wymiany."),
-      en: "Training covers all types of industrial trucks (forklifts cat. I WJO) including variable-reach trucks (telehandlers) and trucks with elevating operator. Includes safe gas cylinder handling.",
-      ua: "Навчання охоплює всі типи автонавантажувачів (категорія I WJO), включаючи телескопічні навантажувачі та ті, де оператор піднімається разом з вантажем. Включає навчання роботі з газовими балонами."
-    },
+      en: "The training covers certifications for all types of industrial trucks (forklifts cat. I WJO) with combustion or battery drive, variable reach, and operator lifted with the load. Additionally, each trainee receives a certificate in the safe use and replacement of gas cylinders.",
+      ua: "Навчання охоплює всі типи автонавантажувачів (категорія I WJO) з ДВЗ або акумуляторним приводом, змінним вильотом стріли та оператором, що піднімається разом з вантажем. Крім того, кожен слухач отримує сертифікат з безпечної експлуатації та заміни газових балонів."
+    }, 
     exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   },
   { 
-    id: "podesty", 
-    title: { pl: "Podesty ruchome przejezdne", en: "Mobile Elevating Work Platforms", ua: "Пересувні підйомні робочі платформи" }, 
+    id: "podesty-ruchome", 
+    title: { pl: "Podesty ruchome przejezdne", en: "Mobile Elevating Work Platforms", ua: "Мобільні підйомні платформи" }, 
     img: "/obrazy/podest.jpg", 
-    summary: { pl: "Zwyżki, podnośniki koszowe, nożycowe i samojezdne.", en: "Aerial lifts, bucket trucks, scissor lifts, and self-propelled platforms.", ua: "Автовишки, ножичні підйомники та самохідні платформи." },
+    summary: { pl: "Uprawnienia na zwyżki, nożycówki i podnośniki koszowe.", en: "Certifications for scissor lifts, boom lifts, and aerial work platforms.", ua: "Дозволи на ножичні, колінчасті та автовишки." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy podestów ruchomych: wolnobieżnych, samojezdnych montowanych na pojeździe, przewoźnych z napędem spalinowym, akumulatorowym i elektrycznym."),
       en: "The training includes certifications for all types of mobile platforms: slow-speed, self-propelled mounted on vehicles, portable with combustion, battery, and electric drives.",
@@ -653,7 +590,7 @@ const DETAILED_SERVICES = [
     img: "/obrazy/zapinacz.jpg", 
     summary: { pl: "Zasady transportu ładunków, dobór zawiesi i sygnalizacja.", en: "Principles of load transport, slinger selection, and signaling.", ua: "Принципи транспортування вантажів, підбір строп та сигналізація." },
     desc: {
-      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z prawidłowymi zasadami transportu ładunku za pomocą urządzeń dźwignicowych, doboru zawiesi oraz sygnałów porozumiewawcze z operatorem."),
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z prawidłowymi zasadami transportu ładunku za pomocą urządzeń dźwignicowych, doboru zawiesi oraz sygnałów porozumiewawczych z operatorem."),
       en: "The training covers the correct principles of load transport using lifting equipment, selection of slings, and communication signals with the operator.",
       ua: "Навчання охоплює правильні принципи транспортування вантажів за допомогою вантажопідйомного обладнання, підбір строп та сигнали зв'язку з оператором."
     },
@@ -661,7 +598,7 @@ const DETAILED_SERVICES = [
   },
   { 
     id: "zurawie-przenosne", 
-    title: { pl: "Żurawie przenośne (HDS)", en: "Truck-mounted cranes (HDS)", ua: "Крани-маніпулятори (HDS)" }, 
+    title: { pl: "Żurawie przenośne", en: "Truck-mounted cranes", ua: "Крани-маніпулятори" }, 
     img: "/obrazy/zurawp.jpeg", 
     summary: { pl: "Uprawnienia na żurawie przeładunkowe oraz urządzenia leśne.", en: "Certifications for loading cranes and forestry equipment.", ua: "Дозволи на крани-маніпулятори та лісове обладнання." },
     desc: {
@@ -689,7 +626,7 @@ const DETAILED_SERVICES = [
     img: "/obrazy/wozkiuno.png", 
     summary: { pl: "Bezpieczna obsługa wózków prowadzonych i elektrycznych paleciaków.", en: "Safe operation of walkie and electric pallet trucks.", ua: "Безпечна експлуатація ручних та електричних палетних візків." },
     desc: {
-      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z bezpieczną obsługą, eksploatacją, transportu ładunku oraz wymianę baterii w wózkach jezdniowych unoszących."),
+      pl: fixOrphans("Szkolenie obejmuje zapoznanie się z bezpieczną obsługą, eksploatacją, transportem ładunku oraz wymianą baterii w wózkach jezdniowych unoszących."),
       en: "The training covers safe operation, use, load transport, and battery replacement in pallet stackers.",
       ua: "Навчання охоплює безпечну експлуатацію, використання, транспортування вантажів та заміну акумуляторів у палетних навантажувачах."
     },
@@ -701,17 +638,17 @@ const DETAILED_SERVICES = [
     img: "/obrazy/wymianabutli.jpg", 
     summary: { pl: "Szkolenie z zakresu bezpiecznej eksploatacji i wymiany butli LPG.", en: "Training on safe operation and exchange of LPG cylinders.", ua: "Навчання з безпечної експлуатації та заміни балонів LPG." },
     desc: {
-      pl: fixOrphans("Szkolenie obejmuje przygotowanie teoretyczne, praktyczne oraz zagrożenia występujące podczas eksploatacji i wymianie butli gazowych w wózkach jezdniowych."),
+      pl: fixOrphans("Szkolenie obejmuje przygotowanie teoretyczne, praktyczne oraz zagrożenia występujące podczas eksploatacji i wymiany butli gazowych w wózkach jezdniowych."),
       en: "The training includes theoretical and practical preparation as well as hazards occurring during operation and exchange of gas cylinders in industrial trucks.",
       ua: "Навчання включає теоретичну та практичну підготовку, а також небезпеки, що виникають під час експлуатації та заміни газових балонів у промислових навантажувачах."
     },
-    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN.", en: "The course ends with an exam and a certificate in accordance with the MEN template.", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN." }
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN z zakresu bezpiecznej eksploatacji i wymiany butli gazowych.", en: "The course ends with an exam and a certificate in accordance with the MEN template.", ua: "Курс завершується іспитом та видачею сертифіката за зразком MEN." }
   },
   { 
     id: "zurawie-wiezowe", 
     title: { pl: "Żurawie wieżowe", en: "Tower Cranes", ua: "Баштові крани" }, 
     img: "/obrazy/zuraww.jpeg", 
-    summary: { pl: "Uprawnienia na żurawie wieżowe (potocznie \"dźwigi\") oraz szybkomontujące i szynowe.", en: "Certifications for tower cranes (construction cranes) and fast-erecting cranes.", ua: "Дозволи на баштові крани (будівельні крани) та швидкомонтовані крани." },
+    summary: { pl: "Uprawnienia na żurawie wieżowe (potocznie 'dźwigi') oraz szybkomontujące i szynowe.", en: "Certifications for tower cranes (commonly called 'cranes') as well as fast-erecting and rail-mounted cranes.", ua: "Дозволи на баштові крани (у просторіччі 'крани'), а також швидкомонтовані та рейкові крани." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi wieżowych, szynowych oraz szybkomontujących."),
       en: "The training covers certifications for all types of tower, rail-mounted, and fast-erecting cranes.",
@@ -735,7 +672,7 @@ const DETAILED_SERVICES = [
     id: "zurawie-samojezdne", 
     title: { pl: "Żurawie samojezdne", en: "Mobile Cranes", ua: "Самохідні крани" }, 
     img: "/obrazy/zurawsamo.jpeg", 
-    summary: { pl: "Samojezdne dźwigi kołowe i gąsienicowe (uprawniają również do obsługi żurawi przenośnych i stacjonarnych).", en: "Large wheel and crawler cranes.", ua: "Великі колісні та гусеничні крани." },
+    summary: { pl: "Samojezdne dźwigi kołowe i gąsienicowe (uprawniają również do obsługi żurawi przenośnych i stacjonarnych).", en: "Large wheel and crawler cranes (also authorizes the operation of mobile and stationary cranes).", ua: "Великі колісні та гусеничні крани (також дозволяє експлуатацію мобільних та стаціонарних кранів)." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi samojezdnych, przenośnych, przewoźnych oraz stacjonarnych."),
       en: "The training covers certifications for all types of mobile, truck-mounted, portable, and stationary cranes.",
@@ -765,7 +702,7 @@ const DETAILED_SERVICES = [
       en: "The training covers the correct principles of operation, use, assembly/disassembly of the device, and safe load transport.",
       ua: "Навчання охоплює правильні принципи експлуатації, використання, монтажу/демонтажу пристрою та безпечного транспортування вантажів."
     },
-    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN (dla urządzeń do 250kg). Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego (dla urządzeń pow. 250kg).", en: "The course ends with an exam and a MEN certificate (for devices up to 250kg) or an UDT exam (for devices over 250kg).", ua: "Курс завершується іспитом та сертифікатом MEN (для пристроїв до 250 кг) або іспитом UDT (для пристроїв понад 250 кг)." }
+    exam: { pl: "Kurs kończy się egzaminem oraz wydaniem zaświadczenia zgodnego ze wzorem MEN. (dla urządzeń do 250kg) Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego. (dla urządzeń pow. 250kg)", en: "The course ends with an exam and a MEN certificate (for devices up to 250kg) or an UDT exam (for devices over 250kg).", ua: "Курс завершується іспитом та сертифікатом MEN (для пристроїв до 250 кг) або іспитом UDT (для пристроїв понад 250 кг)." }
   },
   { 
     id: "dzwigi-tow-osobowe", 
@@ -807,11 +744,11 @@ const DETAILED_SERVICES = [
     id: "napelnianie-skroplone", 
     title: { pl: "Napełnianie butli gazami skroplonymi", en: "Filling liquefied gas cylinders", ua: "Наповнення балонів скрапленим газом" }, 
     img: "/obrazy/gutlehazy.png", 
-    summary: { pl: "Napełnianie butli metodą przelewowo-wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling LPG, air conditioning, and liquefied gas cylinders.", ua: "Наповнення балонів LPG, кондиціонування та скрапленого газу." },
+    summary: { pl: "Napełnianie butli metodą przelewowo wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling cylinders using the overflow weighing method, including recovery from air conditioning and LPG.", ua: "Наповнення балонів методом переливу та зважування, включаючи рекуперацію з кондиціонерів та LPG." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
-      en: "Training covers safe operation and filling procedures for liquefied gas cylinders. Includes cylinders for AC recovery, LPG, etc.",
-      ua: "Навчання охоплює безпечну експлуатацію та процедури наповнення балонів скрапленим газом. Включає балони для обслуговування кондиціонерів, LPG тощо."
+      en: "Training covers safe operation and filling procedures for liquefied gas cylinders using the overflow weighing method. Includes cylinders for AC recovery and filling, LPG, etc.",
+      ua: "Навчання охоплює безпечну експлуатацію та процедури наповнення балонів скрапленим газом методом переливу та зважування. Включає балони для обслуговування кондиціонерів, LPG тощо."
     },
     exam: { pl: "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.", en: "The course ends with an exam before the state commission of the Office of Technical Inspection.", ua: "Курс завершується іспитом перед державною комісією Управління технічного нагляду." }
   }
@@ -1112,7 +1049,7 @@ const Home = ({ city }) => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-7"
             >
-              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">
+              <h1 className="hero-v4-title text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">
                 {city ? (
                   <>
                     {lang === 'pl' && <>Szkolenia UDT <span className="text-accent">{city.name}</span> - Kursy i Uprawnienia</>}
@@ -1127,7 +1064,7 @@ const Home = ({ city }) => {
                   </>
                 )}
               </h1>
-              <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl">
+              <p className="hero-v4-desc text-lg md:text-xl text-white mb-10 max-w-2xl">
                 {city ? (
                   <>
                     {lang === 'pl' && `Profesjonalne kursy na wózki widłowe, podesty i żurawie dla mieszkańców miasta ${city.name} i okolic. Tylko ${city.distance} km do naszego ośrodka w Krośnie!`}
@@ -1316,7 +1253,6 @@ const Home = ({ city }) => {
       </section>
 
       <GoogleReviewSlider />
-      <CertificationSection />
       <ContactSection />
     </div>
   )
@@ -1459,19 +1395,25 @@ const PrivacyPolicy = () => {
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="footer-v4 pt-24 pb-12">
+    <footer className="footer-v4 pt-40 pb-20 relative">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       <div className="container">
-        <div className="grid lg:grid-cols-3 gap-16 mb-20 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 mb-20 items-start text-left">
           <div className="flex flex-col items-start">
-            <Link to="/" className="logo-group mb-8">
-              <img src="/obrazy/logo białe .png" alt="DTMS" className="h-12 md:h-16" />
+            <Link to="/" className="logo-group mb-6">
+              <img src="/obrazy/logo białe .png" alt="DTMS" className="h-12 md:h-14" />
               <div className="logo-text">
-                <span className="text-white block text-xl font-black leading-none">DTMS</span>
-                <span className="text-accent text-xs tracking-[0.2em] font-bold uppercase">Szkolenia Techniczne</span>
+                <span className="text-white block text-xl font-black leading-none" style={{ color: 'white' }}>DTMS</span>
+                <span className="text-accent text-[10px] tracking-[0.2em] font-bold uppercase">Szkolenia Techniczne</span>
               </div>
             </Link>
-            <p className="text-white opacity-60 text-lg leading-relaxed mb-8">{t('footer_about')}</p>
-            <div className="flex gap-4">
+
+            
+            <div className="flex flex-wrap items-center gap-8 mb-8">
+              <div className="relative group max-w-[130px]">
+                <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <img src="/obrazy/certyfikat.jpg" alt="Certyfikat ISO" className="relative z-10 w-full rounded-xl border border-white/10 shadow-2xl transition-all duration-500" />
+              </div>
               <a href="https://www.facebook.com/Szkoleniadtms/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all group">
                 <Facebook size={24} className="group-hover:scale-110 transition-transform" />
               </a>
@@ -1483,20 +1425,24 @@ const Footer = () => {
               {t('nav_contact')}
               <span className="absolute -bottom-2 left-0 w-12 h-1 bg-accent"></span>
             </h4>
-            <div className="flex flex-col gap-6">
-              <div className="flex items-start gap-4 text-white opacity-80">
-                <MapPin className="text-accent shrink-0" size={24} />
-                <p className="text-lg">ul. Łukasiewicza 63, 38-400 Krosno</p>
-              </div>
-              <a href="tel:667677912" className="flex items-center gap-4 text-white hover:text-accent transition-colors group">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                  <Phone size={24} />
+            <div className="flex flex-col gap-5">
+              <div className="flex items-center gap-4 text-white/70">
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-accent">
+                  <MapPin size={20} />
                 </div>
-                <span className="text-2xl font-black">667 677 912</span>
+                <p className="text-base font-medium">ul. Łukasiewicza 63, 38-400 Krosno</p>
+              </div>
+              <a href="tel:667677912" className="flex items-center gap-4 text-white group">
+                <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-primary transition-all">
+                  <Phone size={20} />
+                </div>
+                <span className="text-xl font-black">667 677 912</span>
               </a>
-              <a href="mailto:fhudtms@poczta.fm" className="flex items-center gap-4 text-white opacity-80 hover:text-accent transition-colors">
-                <Mail className="text-accent" size={24} />
-                <span className="text-lg font-bold">fhudtms@poczta.fm</span>
+              <a href="mailto:fhudtms@poczta.fm" className="flex items-center gap-4 text-white/70 hover:text-accent transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-accent">
+                  <Mail size={20} />
+                </div>
+                <span className="text-base font-bold">fhudtms@poczta.fm</span>
               </a>
             </div>
           </div>
@@ -1506,10 +1452,10 @@ const Footer = () => {
               {t('footer_office')}
               <span className="absolute -bottom-2 left-0 w-12 h-1 bg-accent"></span>
             </h4>
-            <p className="text-white opacity-60 text-lg mb-8 leading-relaxed">{t('footer_office_desc')}</p>
-            <a href="tel:667677912" className="btn-primary w-full py-5 rounded-2xl flex justify-center items-center gap-3 relative z-10 shadow-xl shadow-accent/10">
-              <Phone size={20} />
-              <span className="font-black text-lg">{t('footer_call_btn')}</span>
+            <p className="text-white/60 text-base mb-8 leading-relaxed max-w-xs">{t('footer_office_desc')}</p>
+            <a href="tel:667677912" className="btn-primary w-full py-4 rounded-xl flex justify-center items-center gap-3 relative z-10 shadow-xl shadow-accent/10 hover:scale-105 transition-transform">
+              <Phone size={18} />
+              <span className="font-black text-base">{t('footer_call_btn')}</span>
             </a>
           </div>
         </div>
