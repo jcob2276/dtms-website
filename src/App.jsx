@@ -835,127 +835,30 @@ const FloatingContact = () => {
 }
 
 
-const Navbar = () => {
-  const [mobileMenu, setMobileMenu] = useState(false); const location = useLocation(); const navigate = useNavigate();
+const Navbar = ({ mobileMenu, setMobileMenu, handleContactClick }) => {
+  const location = useLocation();
   const { t } = useTranslation();
-  const handleContactClick = (e) => {
-    e.preventDefault();
-    setMobileMenu(false);
-    if (location.pathname !== '/') {
-      navigate('/#kontakt');
-    } else {
-      const element = document.getElementById('kontakt');
-      if (element) {
-        const offset = 100;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = element.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }
-  }
   return (
-    <>
-      <nav className="nav-master">
-        <div className="container nav-container">
-          <Link to="/" className="logo-group"><img src="/obrazy/logo białe .png" alt="DTMS Logo" /><div className="logo-text"><span className="text-white">DTMS</span><span className="text-accent">SZKOLENIA TECHNICZNE</span></div></Link>
-          <div className="nav-links-v4 hidden lg:flex">
-            <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
-            <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
-            <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
-            <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
-              <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
-            </a>
-            <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
-            <LanguageSwitcher />
-          </div>
-          <div className="lg:hidden flex items-center gap-4">
-            <button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button>
-            <LanguageSwitcher />
-          </div>
+    <nav className="nav-master">
+      <div className="container nav-container">
+        <Link to="/" className="logo-group"><img src="/obrazy/logo białe .png" alt="DTMS Logo" /><div className="logo-text"><span className="text-white">DTMS</span><span className="text-accent">SZKOLENIA TECHNICZNE</span></div></Link>
+        <div className="nav-links-v4 hidden lg:flex">
+          <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
+          <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
+          <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
+          <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
+            <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
+          </a>
+          <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
+          <LanguageSwitcher />
         </div>
-      </nav>
-
-      <AnimatePresence>
-        {mobileMenu && (
-          <div className="fixed inset-0 z-[5000] lg:hidden">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => {
-                console.log('Backdrop clicked');
-                setMobileMenu(false);
-              }}
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md cursor-pointer"
-            />
-            <motion.div 
-              initial={{ x: '100%' }} 
-              animate={{ x: 0 }} 
-              exit={{ x: '100%' }} 
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-[#0F172A] shadow-2xl flex flex-col overflow-hidden pointer-events-auto"
-            >
-              <div className="p-6 flex justify-between items-center border-b border-white/5 bg-slate-900/50">
-                <div className="logo-group scale-90 origin-left">
-                  <img src="/obrazy/logo białe .png" alt="DTMS" className="h-10" />
-                </div>
-                <button 
-                  onClick={() => setMobileMenu(false)}
-                  className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-white hover:bg-accent-light transition-all shadow-lg"
-                >
-                  <X size={28} />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Nawigacja</p>
-                  <div className="flex flex-col gap-3">
-                    {[
-                      { to: "/", label: t('nav_start') },
-                      { to: "/uslugi", label: t('nav_services') },
-                      { to: "#kontakt", label: t('nav_contact'), onClick: handleContactClick }
-                    ].map((item, i) => (
-                      <Link 
-                        key={i}
-                        to={item.to} 
-                        onClick={item.onClick || (() => setMobileMenu(false))} 
-                        className="flex items-center justify-between p-5 rounded-2xl bg-white/5 text-lg font-bold text-white hover:bg-accent transition-all border border-white/5 group"
-                      >
-                        <span>{item.label}</span>
-                        <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">E-Learning</p>
-                  <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 text-white group">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent">
-                        <MonitorPlay size={20} />
-                      </div>
-                      <span className="font-bold">{t('nav_elearning')}</span>
-                    </div>
-                    <ChevronRight size={20} className="text-accent group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="p-8 bg-slate-950/50 border-t border-white/5 mt-auto">
-                <a href="tel:667677912" className="btn-primary w-full justify-center py-5 text-lg shadow-xl shadow-accent/20" style={{ background: '#2563EB', color: 'white' }}>
-                  <Phone size={20} /> {t('nav_call')}: 667 677 912
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </>
+        <div className="lg:hidden flex items-center gap-4">
+          <button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button>
+          <LanguageSwitcher />
+        </div>
+      </div>
+    </nav>
   );
 };
 
@@ -1526,24 +1429,128 @@ const App = () => {
           <StructuredData />
           <ScrollToTop />
           <PageManager />
-          <div className="relative overflow-x-hidden">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/uslugi" element={<ServicesPage />} />
-              {SUPPORTED_CITIES.map(city => (
-                <Route key={city.id} path={`/kursy-udt-${city.id}`} element={<Home city={city} />} />
-              ))}
-              <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
-            <FloatingContact />
-            <CookieConsent />
-          </div>
+          <AppContent />
         </Router>
       </LanguageProvider>
     </ErrorBoundary>
+  )
+}
+
+const AppContent = () => {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    setMobileMenu(false);
+    if (location.pathname !== '/') {
+      navigate('/#kontakt');
+    } else {
+      const element = document.getElementById('kontakt');
+      if (element) {
+        const offset = 100;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
+  }
+
+  return (
+    <div className="relative overflow-x-hidden">
+      <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} handleContactClick={handleContactClick} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/uslugi" element={<ServicesPage />} />
+        {SUPPORTED_CITIES.map(city => (
+          <Route key={city.id} path={`/kursy-udt-${city.id}`} element={<Home city={city} />} />
+        ))}
+        <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+      <FloatingContact />
+      <CookieConsent />
+
+      <AnimatePresence>
+        {mobileMenu && (
+          <div className="fixed inset-0 z-[9999] lg:hidden">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenu(false)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md cursor-pointer"
+            />
+            <motion.div 
+              initial={{ x: '100%' }} 
+              animate={{ x: 0 }} 
+              exit={{ x: '100%' }} 
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-[#0F172A] shadow-2xl flex flex-col overflow-hidden pointer-events-auto"
+            >
+              <div className="p-6 flex justify-between items-center border-b border-white/5 bg-slate-900/50">
+                <div className="logo-group scale-90 origin-left">
+                  <img src="/obrazy/logo białe .png" alt="DTMS" className="h-10" />
+                </div>
+                <button 
+                  onClick={() => setMobileMenu(false)}
+                  className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-white hover:bg-accent-light transition-all shadow-lg"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Nawigacja</p>
+                  <div className="flex flex-col gap-3">
+                    {[
+                      { to: "/", label: t('nav_start') },
+                      { to: "/uslugi", label: t('nav_services') },
+                      { to: "#kontakt", label: t('nav_contact'), onClick: handleContactClick }
+                    ].map((item, i) => (
+                      <Link 
+                        key={i}
+                        to={item.to} 
+                        onClick={item.onClick || (() => setMobileMenu(false))} 
+                        className="flex items-center justify-between p-5 rounded-2xl bg-white/5 text-lg font-bold text-white hover:bg-accent transition-all border border-white/5 group"
+                      >
+                        <span>{item.label}</span>
+                        <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">E-Learning</p>
+                  <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/10 text-white group">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent">
+                        <MonitorPlay size={20} />
+                      </div>
+                      <span className="font-bold">{t('nav_elearning')}</span>
+                    </div>
+                    <ChevronRight size={20} className="text-accent group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="p-8 bg-slate-950/50 border-t border-white/5 mt-auto">
+                <a href="tel:667677912" className="btn-primary w-full justify-center py-5 text-lg shadow-xl shadow-accent/20" style={{ background: '#2563EB', color: 'white' }}>
+                  <Phone size={20} /> {t('nav_call')}: 667 677 912
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
 
