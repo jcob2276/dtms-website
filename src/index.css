@@ -3,8 +3,8 @@
 :root {
   /* Design Tokens */
   --primary: #0F172A;
-  --accent: #EA580C;
-  --accent-light: #F97316;
+  --accent: #2563EB;
+  --accent-light: #3B82F6;
   --success: #10B981;
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
@@ -239,6 +239,13 @@ h1, h2, h3, h4 {
 .bg-emerald-500 { background: #10b981 !important; }
 .bg-emerald-600:hover { background: #059669 !important; }
 .bg-white\/90 { background: rgba(255, 255, 255, 0.9) !important; }
+.bg-slate-950 { background: var(--slate-950) !important; }
+.bg-slate-950\/80 { background: rgba(2, 6, 23, 0.8) !important; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.fixed { position: fixed !important; }
+.top-0 { top: 0 !important; }
+.right-0 { right: 0 !important; }
+.h-full { height: 100% !important; }
 
 .scroll-mt-32 { scroll-margin-top: 120px !important; }
 
@@ -346,7 +353,7 @@ h1, h2, h3, h4 {
 
 .btn-phone-v4 {
   background: var(--accent);
-  color: var(--primary);
+  color: white !important;
   padding: 0.75rem 1.5rem;
   border-radius: 100px;
   font-weight: 800;
@@ -355,11 +362,13 @@ h1, h2, h3, h4 {
   gap: 0.75rem;
   transition: var(--transition);
   font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
 .btn-phone-v4:hover {
   transform: translateY(-2px);
   background: var(--accent-light);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
 
 .btn-elearning {
@@ -411,7 +420,7 @@ h1, h2, h3, h4 {
 .hero-v4-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  background: linear-gradient(to right, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.5) 60%, rgba(2, 6, 23, 0.2) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -438,7 +447,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-v4-title .text-accent {
-  text-shadow: 0 0 40px rgba(245, 158, 11, 0.6), 0 2px 10px rgba(0,0,0,0.5) !important;
+  text-shadow: 0 0 40px rgba(37, 99, 235, 0.4), 0 2px 10px rgba(0,0,0,0.5) !important;
   color: var(--accent) !important;
 }
 
@@ -546,19 +555,21 @@ h1, h2, h3, h4 {
   gap: 0.75rem;
   padding: 1.25rem 2.5rem;
   background: var(--accent);
-  color: var(--primary);
+  color: white !important;
   border-radius: 100px;
   font-weight: 800;
   transition: var(--transition);
   font-size: 1.1rem;
   border: none;
   cursor: pointer;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
 }
 
 .btn-primary:hover {
   background: var(--accent-light);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+  color: white !important;
 }
 
 /* --- Form --- */

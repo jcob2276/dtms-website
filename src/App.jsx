@@ -890,49 +890,58 @@ const Navbar = () => {
               animate={{ x: 0 }} 
               exit={{ x: '100%' }} 
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-slate-950 z-[1999] lg:hidden shadow-2xl p-8 flex flex-col"
+              className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-[#0F172A] z-[1999] lg:hidden shadow-2xl p-0 flex flex-col overflow-hidden"
             >
-              <div className="flex justify-between items-center mb-12">
+              <div className="p-8 pb-4 flex justify-between items-center bg-slate-950/50 border-b border-white/5">
                 <div className="logo-group">
-                  <img src="/obrazy/logo białe .png" alt="DTMS" className="h-8" />
+                  <img src="/obrazy/logo białe .png" alt="DTMS" className="h-10" />
                 </div>
                 <button 
                   onClick={() => setMobileMenu(false)}
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white"
+                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white hover:bg-accent transition-all"
                 >
-                  <X size={24} />
+                  <X size={28} />
                 </button>
               </div>
 
-              <div className="flex flex-col gap-6">
-                {[
-                  { to: "/", icon: <ArrowRight size={20} />, label: t('nav_start') },
-                  { to: "/uslugi", icon: <ArrowRight size={20} />, label: t('nav_services') },
-                  { to: "#kontakt", icon: <ArrowRight size={20} />, label: t('nav_contact'), onClick: handleContactClick }
-                ].map((item, i) => (
-                  <Link 
-                    key={i}
-                    to={item.to} 
-                    onClick={item.onClick || (() => setMobileMenu(false))} 
-                    className="flex items-center justify-between p-4 rounded-2xl bg-white/5 text-xl font-bold text-white hover:bg-accent hover:text-primary transition-all group"
-                  >
-                    <span>{item.label}</span>
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary/20">
-                      {item.icon}
+              <div className="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">{t('nav_services')}</p>
+                  <div className="flex flex-col gap-3">
+                    {[
+                      { to: "/", icon: <ArrowRight size={20} />, label: t('nav_start') },
+                      { to: "/uslugi", icon: <ArrowRight size={20} />, label: t('nav_services') },
+                      { to: "#kontakt", icon: <ArrowRight size={20} />, label: t('nav_contact'), onClick: handleContactClick }
+                    ].map((item, i) => (
+                      <Link 
+                        key={i}
+                        to={item.to} 
+                        onClick={item.onClick || (() => setMobileMenu(false))} 
+                        className="flex items-center justify-between p-5 rounded-2xl bg-white/5 text-lg font-bold text-white hover:bg-accent hover:translate-x-2 transition-all border border-white/5"
+                      >
+                        <span>{item.label}</span>
+                        <ArrowRight size={18} className="opacity-40" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Dodatki</p>
+                  <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-accent/10 border border-accent/20 text-white group">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent">
+                        <MonitorPlay size={20} />
+                      </div>
+                      <span className="font-bold">{t('nav_elearning')}</span>
                     </div>
-                  </Link>
-                ))}
+                    <ChevronRight size={20} className="text-accent group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
               </div>
 
-              <div className="mt-auto flex flex-col gap-4">
-                <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning justify-between w-full py-5 px-6">
-                  <div className="flex items-center gap-3">
-                    <MonitorPlay size={20} className="text-accent" />
-                    <span className="text-base font-bold uppercase">{t('nav_elearning')}</span>
-                  </div>
-                  <ChevronRight size={20} className="opacity-50" />
-                </a>
-                <a href="tel:667677912" className="btn-phone-v4 justify-center py-5 text-lg shadow-xl shadow-accent/20">
+              <div className="p-8 bg-slate-950/50 border-t border-white/5 mt-auto">
+                <a href="tel:667677912" className="btn-primary w-full justify-center py-5 text-lg shadow-xl shadow-accent/20">
                   <Phone size={20} /> {t('nav_call')}: 667 677 912
                 </a>
               </div>
