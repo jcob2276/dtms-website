@@ -877,26 +877,67 @@ const Navbar = () => {
       </div>
       <AnimatePresence>
         {mobileMenu && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, y: -20 }} 
-            className="absolute top-full left-0 w-full bg-primary border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden shadow-2xl"
-          >
-            <Link to="/" onClick={() => setMobileMenu(false)} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">{t('nav_start')} <ChevronRight size={20} /></Link>
-            <Link to="/uslugi" onClick={() => setMobileMenu(false)} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">{t('nav_services')} <ChevronRight size={20} /></Link>
-            <a href="#kontakt" onClick={handleContactClick} className="text-2xl font-black text-white hover:text-accent transition-colors flex items-center justify-between">{t('nav_contact')} <ChevronRight size={20} /></a>
-            <div className="mt-4 pt-6 border-t border-white/10 flex flex-col gap-4">
-              <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning justify-between w-full py-4">
-                <div className="flex items-center gap-3">
-                  <MonitorPlay size={20} className="text-accent" />
-                  <span className="text-base font-bold uppercase">{t('nav_elearning')}</span>
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenu(false)}
+              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[1998] lg:hidden"
+            />
+            <motion.div 
+              initial={{ x: '100%' }} 
+              animate={{ x: 0 }} 
+              exit={{ x: '100%' }} 
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-slate-950 z-[1999] lg:hidden shadow-2xl p-8 flex flex-col"
+            >
+              <div className="flex justify-between items-center mb-12">
+                <div className="logo-group">
+                  <img src="/obrazy/logo białe .png" alt="DTMS" className="h-8" />
                 </div>
-                <ChevronRight size={20} className="opacity-50" />
-              </a>
-              <a href="tel:667677912" className="btn-phone-v4 justify-center py-5 text-lg">{t('nav_call')}: 667 677 912</a>
-            </div>
-          </motion.div>
+                <button 
+                  onClick={() => setMobileMenu(false)}
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                {[
+                  { to: "/", icon: <ArrowRight size={20} />, label: t('nav_start') },
+                  { to: "/uslugi", icon: <ArrowRight size={20} />, label: t('nav_services') },
+                  { to: "#kontakt", icon: <ArrowRight size={20} />, label: t('nav_contact'), onClick: handleContactClick }
+                ].map((item, i) => (
+                  <Link 
+                    key={i}
+                    to={item.to} 
+                    onClick={item.onClick || (() => setMobileMenu(false))} 
+                    className="flex items-center justify-between p-4 rounded-2xl bg-white/5 text-xl font-bold text-white hover:bg-accent hover:text-primary transition-all group"
+                  >
+                    <span>{item.label}</span>
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary/20">
+                      {item.icon}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-auto flex flex-col gap-4">
+                <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning justify-between w-full py-5 px-6">
+                  <div className="flex items-center gap-3">
+                    <MonitorPlay size={20} className="text-accent" />
+                    <span className="text-base font-bold uppercase">{t('nav_elearning')}</span>
+                  </div>
+                  <ChevronRight size={20} className="opacity-50" />
+                </a>
+                <a href="tel:667677912" className="btn-phone-v4 justify-center py-5 text-lg shadow-xl shadow-accent/20">
+                  <Phone size={20} /> {t('nav_call')}: 667 677 912
+                </a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
