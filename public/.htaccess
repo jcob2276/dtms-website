@@ -10,6 +10,10 @@
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)/$ /$1 [L,R=301]
 
+  # 3. Przekierowania 301 ze starej strony
+  Redirect 301 /kontakt /
+  Redirect 301 /kontakt/ /
+
   # 3. Obsługa statycznie wygenerowanych plików (SSG)
   # Jeśli plik .html istnieje, serwuj go bezpośrednio
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
