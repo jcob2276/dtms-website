@@ -711,7 +711,7 @@ const DETAILED_SERVICES = [
     id: "zurawie-wiezowe", 
     title: { pl: "Żurawie wieżowe", en: "Tower Cranes", ua: "Баштові крани" }, 
     img: "/obrazy/zuraww.jpeg", 
-    summary: { pl: "Uprawnienia na żurawie wieżowe (dźwigi budowlane) i szybkomontujące.", en: "Certifications for tower cranes (construction cranes) and fast-erecting cranes.", ua: "Дозволи на баштові крани (будівельні крани) та швидкомонтовані крани." },
+    summary: { pl: "Uprawnienia na żurawie wieżowe (potocznie \"dźwigi\") oraz szybkomontujące i szynowe.", en: "Certifications for tower cranes (construction cranes) and fast-erecting cranes.", ua: "Дозволи на баштові крани (будівельні крани) та швидкомонтовані крани." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi wieżowych, szynowych oraz szybkomontujących."),
       en: "The training covers certifications for all types of tower, rail-mounted, and fast-erecting cranes.",
@@ -735,7 +735,7 @@ const DETAILED_SERVICES = [
     id: "zurawie-samojezdne", 
     title: { pl: "Żurawie samojezdne", en: "Mobile Cranes", ua: "Самохідні крани" }, 
     img: "/obrazy/zurawsamo.jpeg", 
-    summary: { pl: "Duże dźwigi kołowe i gąsienicowe.", en: "Large wheel and crawler cranes.", ua: "Великі колісні та гусеничні крани." },
+    summary: { pl: "Samojezdne dźwigi kołowe i gąsienicowe (uprawniają również do obsługi żurawi przenośnych i stacjonarnych).", en: "Large wheel and crawler cranes.", ua: "Великі колісні та гусеничні крани." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na wszystkie typy żurawi samojezdnych, przenośnych, przewoźnych oraz stacjonarnych."),
       en: "The training covers certifications for all types of mobile, truck-mounted, portable, and stationary cranes.",
@@ -783,7 +783,7 @@ const DETAILED_SERVICES = [
     id: "suwnice", 
     title: { pl: "Suwnice", en: "Overhead Cranes", ua: "Мостові крани" }, 
     img: "/obrazy/suwnice.jpg", 
-    summary: { pl: "Suwnice, wciągniki i wciągarki ogólnego przeznaczenia.", en: "Cranes, hoists, and winches for general and special purposes.", ua: "Крани, талі та лебідки загального та спеціального призначення." },
+    summary: { pl: "Suwnice, wciągniki i wciągarki ogólnego oraz specjalnego przeznaczenia.", en: "Cranes, hoists, and winches for general and special purposes.", ua: "Крани, талі та лебідки загального та спеціального призначення." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje uprawnienia na suwnice, wciągniki i wciągarki ogólnego oraz specjalnego przeznaczenia."),
       en: "The training includes certifications for overhead cranes, hoists, and winches of general and special purposes.",
@@ -807,7 +807,7 @@ const DETAILED_SERVICES = [
     id: "napelnianie-skroplone", 
     title: { pl: "Napełnianie butli gazami skroplonymi", en: "Filling liquefied gas cylinders", ua: "Наповнення балонів скрапленим газом" }, 
     img: "/obrazy/gutlehazy.png", 
-    summary: { pl: "Napełnianie butli LPG, klimatyzacji i gazów skroplonych.", en: "Filling LPG, air conditioning, and liquefied gas cylinders.", ua: "Наповнення балонів LPG, кондиціонування та скрапленого газу." },
+    summary: { pl: "Napełnianie butli metodą przelewowo-wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling LPG, air conditioning, and liquefied gas cylinders.", ua: "Наповнення балонів LPG, кондиціонування та скрапленого газу." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
       en: "Training covers safe operation and filling procedures for liquefied gas cylinders. Includes cylinders for AC recovery, LPG, etc.",
