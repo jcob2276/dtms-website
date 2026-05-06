@@ -3,8 +3,8 @@
 :root {
   /* Design Tokens */
   --primary: #0F172A;
-  --accent: #F59E0B;
-  --accent-light: #FFB02E;
+  --accent: #EA580C;
+  --accent-light: #F97316;
   --success: #10B981;
   --slate-50: #F8FAFC;
   --slate-100: #F1F5F9;
@@ -272,8 +272,8 @@ h1, h2, h3, h4 {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(20px);
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   height: 90px;
   display: flex;

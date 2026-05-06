@@ -1170,9 +1170,9 @@ const Home = ({ city }) => {
                 ))}
               </div>
 
-              <a href="tel:667677912" className="btn-primary px-12 py-5 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform inline-flex">
+              <a href="tel:667677912" className="btn-primary px-12 py-5 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform inline-flex mb-10 lg:mb-0">
                 <Phone size={20} />
-                <span className="text-primary">{t('fire_btn')}</span>
+                <span className="text-primary font-black">{t('fire_btn')}</span>
               </a>
             </motion.div>
 
@@ -1196,7 +1196,7 @@ const Home = ({ city }) => {
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(245,158,11,0.05),transparent)] pointer-events-none"></div>
         <div className="container relative z-10">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-primary mb-8 tracking-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-primary mb-8 tracking-tight">
               {t('req_title').split('{accent}')[0]}
               <span className="text-accent">{t('req_accent')}</span>
               {t('req_title').split('{accent}')[1]}
@@ -1207,48 +1207,29 @@ const Home = ({ city }) => {
           
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { icon: <UserCheck size={48} />, title: t('req_age_title'), desc: t('req_age_desc'), gradient: 'from-blue-500/10 to-blue-500/0' },
-              { icon: <GraduationCap size={48} />, title: t('req_edu_title'), desc: t('req_edu_desc'), gradient: 'from-accent/10 to-accent/0' },
-              { icon: <ShieldCheck size={48} />, title: t('req_health_title'), desc: t('req_health_desc'), gradient: 'from-emerald-500/10 to-emerald-500/0' }
+              { icon: <UserCheck size={32} className="md:w-12 md:h-12" />, title: t('req_age_title'), desc: t('req_age_desc'), gradient: 'from-blue-500/10 to-blue-500/0' },
+              { icon: <GraduationCap size={32} className="md:w-12 md:h-12" />, title: t('req_edu_title'), desc: t('req_edu_desc'), gradient: 'from-accent/10 to-accent/0' },
+              { icon: <ShieldCheck size={32} className="md:w-12 md:h-12" />, title: t('req_health_title'), desc: t('req_health_desc'), gradient: 'from-emerald-500/10 to-emerald-500/0' }
             ].map((req, i) => (
               <motion.div 
                 key={i} 
                 whileHover={{ y: -10 }}
-                className="relative p-12 bg-slate-50 rounded-[3.5rem] border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] transition-all overflow-hidden group"
+                className="relative p-8 md:p-12 bg-slate-50 rounded-[2.5rem] md:rounded-[3.5rem] border border-slate-100 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] transition-all overflow-hidden group"
               >
                 <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${req.gradient} rounded-full -mr-20 -mt-20 opacity-50 group-hover:scale-150 transition-transform duration-700`}></div>
                 
-                <div className="relative z-10">
-                  <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center text-accent mb-10 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl shadow-xl flex items-center justify-center text-accent mb-6 md:mb-10 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                     {req.icon}
                   </div>
-                  <h3 className="text-3xl font-black text-primary mb-6">{req.title}</h3>
-                  <p className="text-slate-500 text-lg leading-relaxed font-medium">{req.desc}</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 md:mb-6">{req.title}</h3>
+                  <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium">{req.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-20 p-10 md:p-16 bg-primary rounded-[4rem] relative overflow-hidden shadow-2xl shadow-primary/20"
-          >
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/20 to-transparent"></div>
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/10 blur-[80px] rounded-full"></div>
-            
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-              <div className="text-center lg:text-left">
-                <h4 className="text-3xl md:text-4xl font-black text-white mb-4">{t('req_ready')}</h4>
-                <p className="text-white/70 text-xl font-medium max-w-xl">{t('req_ready_desc')}</p>
-              </div>
-              <a href="tel:667677912" className="btn-primary px-12 py-6 text-xl shadow-2xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all">
-                <Phone size={24} />
-                <span>{t('nav_call')}: 667 677 912</span>
-              </a>
-            </div>
-          </motion.div>
+
         </div>
       </section>
 
@@ -1398,8 +1379,8 @@ const Footer = () => {
     <footer className="footer-v4 pt-40 pb-20 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 mb-20 items-start text-left">
-          <div className="flex flex-col items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 mb-20 items-start text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <Link to="/" className="logo-group mb-6">
               <img src="/obrazy/logo białe .png" alt="DTMS" className="h-12 md:h-14" />
               <div className="logo-text">
@@ -1409,7 +1390,7 @@ const Footer = () => {
             </Link>
 
             
-            <div className="flex flex-wrap items-center gap-8 mb-8">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 mb-8">
               <div className="relative group max-w-[130px]">
                 <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <img src="/obrazy/certyfikat.jpg" alt="Certyfikat ISO" className="relative z-10 w-full rounded-xl border border-white/10 shadow-2xl transition-all duration-500" />
@@ -1420,25 +1401,25 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-white text-xl font-black mb-10 uppercase tracking-widest relative inline-block">
+          <div className="flex flex-col items-center md:items-start">
+            <h4 className="text-white text-xl font-black mb-10 uppercase tracking-widest relative inline-block mx-auto md:mx-0">
               {t('nav_contact')}
-              <span className="absolute -bottom-2 left-0 w-12 h-1 bg-accent"></span>
+              <span className="absolute -bottom-2 left-0 md:left-0 w-12 h-1 bg-accent"></span>
             </h4>
             <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-4 text-white/70">
+              <div className="flex items-center justify-center md:justify-start gap-4 text-white/70">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-accent">
                   <MapPin size={20} />
                 </div>
                 <p className="text-base font-medium">ul. Łukasiewicza 63, 38-400 Krosno</p>
               </div>
-              <a href="tel:667677912" className="flex items-center gap-4 text-white group">
+              <a href="tel:667677912" className="flex items-center justify-center md:justify-start gap-4 text-white group">
                 <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-primary transition-all">
                   <Phone size={20} />
                 </div>
                 <span className="text-xl font-black">667 677 912</span>
               </a>
-              <a href="mailto:fhudtms@poczta.fm" className="flex items-center gap-4 text-white/70 hover:text-accent transition-colors">
+              <a href="mailto:fhudtms@poczta.fm" className="flex items-center justify-center md:justify-start gap-4 text-white/70 hover:text-accent transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-accent">
                   <Mail size={20} />
                 </div>
@@ -1447,12 +1428,12 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-white text-xl font-black mb-10 uppercase tracking-widest relative inline-block">
+          <div className="flex flex-col items-center md:items-start">
+            <h4 className="text-white text-xl font-black mb-10 uppercase tracking-widest relative inline-block mx-auto md:mx-0">
               {t('footer_office')}
               <span className="absolute -bottom-2 left-0 w-12 h-1 bg-accent"></span>
             </h4>
-            <p className="text-white/60 text-base mb-8 leading-relaxed max-w-xs">{t('footer_office_desc')}</p>
+            <p className="text-white/60 text-base mb-8 leading-relaxed max-w-xs mx-auto md:mx-0">{t('footer_office_desc')}</p>
             <a href="tel:667677912" className="btn-primary w-full py-4 rounded-xl flex justify-center items-center gap-3 relative z-10 shadow-xl shadow-accent/10 hover:scale-105 transition-transform">
               <Phone size={18} />
               <span className="font-black text-base">{t('footer_call_btn')}</span>
