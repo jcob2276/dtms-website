@@ -58,18 +58,6 @@ Strona jest zbudowana jako **Single Page Application (SPA)**, co oznacza, że po
 ## 5. Roadmapa Rozwoju (Co testujemy dalej?)
 
 ### KROK 1: PWA (Progressive Web App - Wdrożone!)
-- **Zadanie:** Dodanie `manifest.json` oraz `sw.js`.
-- **Cel:** Ikona DTMS na pulpicie telefonu użytkownika i obsługa offline.
-
-### KROK 2: Skeleton Loaders (Wdrożone!)
-- **Zadanie:** Implementacja "szkieletów" zamiast loading spinnerów w sekcji Oferta.
-- **Cel:** Jeszcze wyższe postrzeganie szybkości (Perceived Performance).
-
-### KROK 3: FAQ Schema
-- **Zadanie:** Dodanie sekcji pytań i odpowiedzi na podstronach.
-- **Cel:** Zabranie 2x więcej miejsca w wynikach wyszukiwania Google.
-
-### KROK 4: WhatsApp Integration
 - **Zadanie:** Dodanie pływającego przycisku czatu.
 - **Cel:** Zwiększenie liczby szybkich zapytań od klientów mobilnych.
 
