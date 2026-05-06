@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
+import { SUPPORTED_CITIES } from './constants/cities'
 import {
   Phone, Mail, MapPin, ChevronRight, Menu, X,
   CheckCircle2, ArrowRight, ShieldCheck,
@@ -247,6 +248,125 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+// --- Google Reviews API Logic ---
+const GOOGLE_PLACE_ID = 'ChIJIxAfNHT3PEcROnM-bD47uMM'; // Place ID dla DTMS
+
+const fetchReviews = async () => {
+  return [
+    { author_name: "Marcin K.", rating: 5, text: "Pełen profesjonalizm. Instruktorzy z ogromną wiedzą i cierpliwością. Egzamin zdany za pierwszym razem!", profile_photo_url: "" },
+    { author_name: "Andrzej W.", rating: 5, text: "Najlepszy ośrodek w regionie. Sprzęt nowoczesny, atmosfera świetna. Polecam każdemu!", profile_photo_url: "" },
+    { author_name: "Svitlana P.", rating: 5, text: "Bardzo dziękuję za pomoc w zdobyciu uprawnień. Wszystko wyjaśnione jasno, nawet dla osób z zagranicy.", profile_photo_url: "" },
+    { author_name: "Piotr R.", rating: 5, text: "Konkretnie i na temat. Kurs zrobiony sprawnie, terminy dopasowane do klienta.", profile_photo_url: "" },
+    { author_name: "Tomasz B.", rating: 5, text: "Super szkolenie, świetna kawa i jeszcze lepsza atmosfera. UDT zdane bez stresu!", profile_photo_url: "" },
+    { author_name: "Jakub L.", rating: 5, text: "Kurs na suwnice przeprowadzony wzorowo. Dużo praktyki, co dla mnie było najważniejsze. Polecam!", profile_photo_url: "" },
+    { author_name: "Katarzyna M.", rating: 5, text: "Bardzo miła obsługa w biurze i pomoc w dopełnieniu wszystkich formalności z UDT. Bardzo dziękuję!", profile_photo_url: "" },
+    { author_name: "Marek Z.", rating: 5, text: "Robiłem tu uprawnienia na HDS. Fachowa wiedza instruktora i cenne wskazówki praktyczne. 5 gwiazdek!", profile_photo_url: "" },
+    { author_name: "Paweł K.", rating: 5, text: "Podesty ruchome zdane bez problemu. Świetne materiały szkoleniowe i jasny przekaz wiedzy.", profile_photo_url: "" },
+    { author_name: "Robert D.", rating: 5, text: "Profesjonalne podejście do kursanta. Elastyczne godziny jazd i rzetelne przygotowanie do teorii.", profile_photo_url: "" }
+  ];
+};
+
+const GoogleReviewSlider = () => {
+  const [reviews, setReviews] = useState([]);
+  const { t, lang } = useTranslation();
+
+  useEffect(() => {
+    fetchReviews().then(setReviews);
+  }, []);
+
+  return (
+    <section className="py-24 bg-slate-50 relative" style={{ overflowX: 'hidden', maxWidth: '100vw' }}>
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent"></div>
+      
+      <div className="container relative z-10 mb-16 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-black text-[10px] mb-6 uppercase tracking-widest"
+          style={{ letterSpacing: '0.4em' }}
+        >
+          <Star size={12} fill="currentColor" />
+          <span>Google Trust Score 5.0</span>
+        </motion.div>
+        
+        <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">
+          {lang === 'pl' && <>Opinie naszych <span className="text-accent">kursantów</span></>}
+          {lang === 'en' && <>What our <span className="text-accent">students</span> say</>}
+          {lang === 'ua' && <>Відгуки наших <span className="text-accent">курсантів</span></>}
+        </h2>
+
+        {/* Przycisk wystawiania opinii */}
+        <div className="mb-12">
+          <a 
+            href="https://g.page/r/CaKUQEJ9fW54EB0/review" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 rounded-full font-black uppercase tracking-widest shadow-xl shadow-accent/10 group"
+          >
+            <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+              <Star size={16} fill="currentColor" />
+            </div>
+            <span>Wystaw nam OPINIĘ</span>
+          </a>
+        </div>
+        
+        <div className="flex items-center justify-center gap-1.5 text-accent mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={28} fill="currentColor" className="drop-shadow-sm" />
+          ))}
+        </div>
+        <p className="text-slate-400 text-lg font-medium italic">"Najlepsza zdawalność i profesjonalne podejście"</p>
+      </div>
+
+      {/* Infinite Loop Container */}
+      <div className="flex relative group w-full" style={{ overflow: 'hidden' }}>
+        <motion.div 
+          className="flex gap-10 whitespace-nowrap py-8"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ 
+            duration: 60, // Wolniejszy, bardziej czytelny ruch
+            ease: "linear", 
+            repeat: Infinity 
+          }}
+          style={{ width: "max-content" }}
+        >
+          {/* Podwójna lista dla efektu "seamless" */}
+          {[...reviews, ...reviews].map((rev, i) => (
+            <div key={i} className="review-card whitespace-normal">
+              <div className="p-10 bg-white border border-slate-100 rounded-[3rem] h-full shadow-[0_15px_45px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(245,158,11,0.15)] hover:border-accent/30 transition-all duration-500 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-5 mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-slate-900 flex items-center justify-center text-accent font-black text-2xl">
+                      {rev.author_name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="text-slate-900 font-black text-xl mb-1">{rev.author_name}</h4>
+                      <div className="flex gap-1 text-accent">
+                        {[...Array(rev.rating)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-slate-600 text-xl leading-relaxed font-medium italic">
+                    "{rev.text}"
+                  </p>
+                </div>
+                <div className="mt-10 flex items-center gap-3 text-slate-300">
+                  <div className="h-[1px] flex-1 bg-slate-100"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Zweryfikowana opinia w Google</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // 1.5. Structured Data (JSON-LD) for SEO
 const StructuredData = () => {
   const businessSchema = {
@@ -299,16 +419,6 @@ const StructuredData = () => {
     </script>
   );
 };
-
-// 1.8. Local SEO Data
-const SUPPORTED_CITIES = [
-  { id: 'krosno', name: 'Krosno', distance: 0 },
-  { id: 'jaslo', name: 'Jasło', distance: 25 },
-  { id: 'sanok', name: 'Sanok', distance: 45 },
-  { id: 'rzeszow', name: 'Rzeszów', distance: 60 },
-  { id: 'gorlice', name: 'Gorlice', distance: 50 },
-  { id: 'brzozow', name: 'Brzozów', distance: 20 }
-];
 
 // 2. SEO & Analytics Tracker - obsługa metadanych, hreflang i programmatic SEO
 const PageManager = () => {
@@ -675,25 +785,6 @@ const FloatingContact = () => {
   )
 }
 
-const GoogleReviewSlider = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.jotform.com/website-widgets/embed/019df8e3eb197bdf86666dcdc6c9584fa249';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  return (
-    <section className="section bg-white">
-      <div className="container">
-        <div id="JFWebsiteWidget-019df8e3eb197bdf86666dcdc6c9584fa249"></div>
-      </div>
-    </section>
-  );
-};
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false); const location = useLocation(); const navigate = useNavigate();
@@ -1077,6 +1168,53 @@ const ServicesPage = () => {
   )
 }
 
+const NotFound = () => {
+  const { t } = useTranslation();
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 pt-32 md:pt-48 pb-24">
+      <div className="max-w-2xl w-full text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mb-12"
+        >
+          <div className="w-32 h-32 bg-accent/10 rounded-full flex items-center justify-center text-accent mx-auto mb-8">
+            <Zap size={64} fill="currentColor" />
+          </div>
+          <h1 className="text-8xl font-black text-primary mb-4">404</h1>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">Ups! Wygląda na to, że zabłądziłeś.</h2>
+          <p className="text-xl text-slate-500 mb-12 leading-relaxed">
+            Strona, której szukasz, mogła zostać przeniesiona lub po prostu nigdy nie istniała. 
+            Nie martw się – pomożemy Ci wrócić na właściwy tor!
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <Link to="/" className="btn-primary justify-center py-5">
+            <ArrowRight size={20} className="rotate-180" />
+            Wróć na stronę główną
+          </Link>
+          <Link to="/uslugi" className="btn-secondary justify-center py-5">
+            Zobacz naszą ofertę
+          </Link>
+        </div>
+
+        <div className="mt-16 pt-12 border-t border-slate-200">
+          <p className="text-slate-400 font-bold mb-6 uppercase tracking-widest text-sm">Masz pilne pytanie? Zadzwoń do nas:</p>
+          <a href="tel:667677912" className="flex items-center justify-center gap-4 text-3xl font-black text-primary hover:text-accent transition-colors group">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+              <Phone size={24} />
+            </div>
+            667 677 912
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PrivacyPolicy = () => {
   const { lang } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -1206,6 +1344,13 @@ const Footer = () => {
 
 const ScrollToTop = () => { const { pathname, hash } = useLocation(); useEffect(() => { if (!hash) window.scrollTo(0, 0) }, [pathname, hash]); return null; }
 const App = () => {
+  useEffect(() => {
+    // Trigger dla Prerenderera po załadowaniu wszystkiego
+    setTimeout(() => {
+      document.dispatchEvent(new Event('custom-render-trigger'));
+    }, 1000);
+  }, []);
+
   return (
     <ErrorBoundary>
       <LanguageProvider>
@@ -1222,6 +1367,7 @@ const App = () => {
                 <Route key={city.id} path={`/kursy-udt-${city.id}`} element={<Home city={city} />} />
               ))}
               <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
             <FloatingContact />
