@@ -856,28 +856,31 @@ const Navbar = () => {
     }
   }
   return (
-    <nav className="nav-master">
-      <div className="container nav-container">
-        <Link to="/" className="logo-group"><img src="/obrazy/logo białe .png" alt="DTMS Logo" /><div className="logo-text"><span className="text-white">DTMS</span><span className="text-accent">SZKOLENIA TECHNICZNE</span></div></Link>
-        <div className="nav-links-v4 hidden lg:flex">
-          <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
-          <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
-          <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
-          <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
-            <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
-          </a>
-          <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
-          <LanguageSwitcher />
+    <>
+      <nav className="nav-master">
+        <div className="container nav-container">
+          <Link to="/" className="logo-group"><img src="/obrazy/logo białe .png" alt="DTMS Logo" /><div className="logo-text"><span className="text-white">DTMS</span><span className="text-accent">SZKOLENIA TECHNICZNE</span></div></Link>
+          <div className="nav-links-v4 hidden lg:flex">
+            <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
+            <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
+            <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
+            <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
+              <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
+            </a>
+            <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
+            <LanguageSwitcher />
+          </div>
+          <div className="lg:hidden flex items-center gap-4">
+            <button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button>
+            <LanguageSwitcher />
+          </div>
         </div>
-        <div className="lg:hidden flex items-center gap-4">
-          <button className="text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>{mobileMenu ? <X size={28} /> : <Menu size={28} />}</button>
-          <LanguageSwitcher />
-        </div>
-      </div>
+      </nav>
+
       <AnimatePresence>
         {mobileMenu && (
-          <div className="fixed inset-0 z-[3000] lg:hidden">
+          <div className="fixed inset-0 z-[5000] lg:hidden">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -949,9 +952,9 @@ const Navbar = () => {
           </div>
         )}
       </AnimatePresence>
-    </nav>
-  )
-}
+    </>
+  );
+};
 
 const ContactSection = () => {
   const { t, lang } = useTranslation();
