@@ -25,7 +25,7 @@ const translations = {
     nav_call: 'Zadzwoń',
     hero_title: 'Profesjonalne {accent} w Krośnie',
     hero_accent: 'Szkolenia UDT',
-    hero_desc: 'Zdobądź uprawnienia na wózki widłowe, podesty, suwnice i żurawie. Szkolimy na nowoczesnym sprzęcie z najwyższą zdawalnością.',
+    hero_desc: 'Zdobądź uprawnienia na wózki widłowe, podesty, suwnice i żurawie.',
     hero_btn_enroll: 'Zapisz się na kurs',
     hero_btn_offer: 'Zobacz ofertę',
     hero_next_courses: 'Najbliższe kursy',
@@ -86,7 +86,7 @@ const translations = {
     nav_call: 'Call',
     hero_title: 'Professional {accent} in Krosno',
     hero_accent: 'UDT Training',
-    hero_desc: 'Get certified for forklifts, platforms, cranes, and hoists. We train on modern equipment with the highest pass rate.',
+    hero_desc: 'Get certified for forklifts, platforms, cranes, and hoists.',
     hero_btn_enroll: 'Enroll now',
     hero_btn_offer: 'View offer',
     hero_next_courses: 'Upcoming courses',
@@ -147,7 +147,7 @@ const translations = {
     nav_call: 'Зателефонувати',
     hero_title: 'Професійне {accent} у Кросно',
     hero_accent: 'Навчання UDT',
-    hero_desc: 'Отримайте сертифікати на навантажувачі, підйомники, крани та лебідки. Навчаємо на сучасному обладнанні з найвищим показником успішності.',
+    hero_desc: 'Отримайте сертифікати на навантажувачі, підйомники, крани та лебідки.',
     hero_btn_enroll: 'Записатися на курс',
     hero_btn_offer: 'Переглянути пропозицію',
     hero_next_courses: 'Найближчі курси',
@@ -1317,7 +1317,6 @@ const Home = ({ city }) => {
 
       <GoogleReviewSlider />
       <CertificationSection />
-      <ServiceArea />
       <ContactSection />
     </div>
   )
