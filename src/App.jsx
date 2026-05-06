@@ -786,7 +786,12 @@ const DETAILED_SERVICES = [
 ]
 
 
-// --- Components ---
+// --- UI Components ---
+
+// 1. Skeleton Loader - dla lepszego Perceived Performance
+const Skeleton = ({ className }) => (
+  <div className={`animate-pulse bg-slate-200 rounded-2xl ${className}`}></div>
+);
 
 const LanguageSwitcher = () => {
   const { lang, setLang } = useTranslation();
@@ -1015,6 +1020,14 @@ const ContactSection = () => {
 const Home = ({ city }) => {
   const { hash } = useLocation();
   const { t, lang } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Symulacja ładowania danych dla efektu Skeleton
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     if (hash === '#kontakt') {
       setTimeout(() => {
@@ -1114,20 +1127,34 @@ const Home = ({ city }) => {
             <div className="w-24 h-2 bg-accent mx-auto mb-8 rounded-full"></div>
             <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto">{t('offer_desc')}</p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {DETAILED_SERVICES.map((s, i) => (
-              <Link key={i} to={`/uslugi#${s.id}`} className="offer-card group">
-                <img src={s.img} className="offer-card-img group-hover:scale-110" alt={s.title.pl} />
-                <div className="offer-card-overlay">
-                  <h4 className="offer-card-title group-hover:text-accent transition-colors">{s.title[lang] || s.title.pl}</h4>
-                  <p className="offer-card-summary line-clamp-3">
-                    {s.summary[lang] || s.summary.pl}
-                  </p>
+            {isLoading ? (
+              // Wyświetlaj szkielety podczas ładowania
+              Array(6).fill(0).map((_, i) => (
+                <div key={i} className="flex flex-col gap-4">
+                  <Skeleton className="aspect-video w-full" />
+                  <Skeleton className="h-8 w-3/4" />
+                  <Skeleton className="h-20 w-full" />
                 </div>
-              </Link>
-            ))}
+              ))
+            ) : (
+              DETAILED_SERVICES.map((s, i) => (
+                <Link key={i} to={`/uslugi#${s.id}`} className="offer-card group">
+                  <img src={s.img} className="offer-card-img group-hover:scale-110" alt={s.title.pl} />
+                  <div className="offer-card-overlay">
+                    <h4 className="offer-card-title group-hover:text-accent transition-colors">{s.title[lang] || s.title.pl}</h4>
+                    <p className="offer-card-summary line-clamp-3">
+                      {s.summary[lang] || s.summary.pl}
+                    </p>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
-          <div className="mt-16 text-center"><Link to="/uslugi" className="btn-primary">{t('offer_btn_all')} <ArrowRight size={24} /></Link></div>
+          {!isLoading && (
+            <div className="mt-16 text-center"><Link to="/uslugi" className="btn-primary">{t('offer_btn_all')} <ArrowRight size={24} /></Link></div>
+          )}
         </div>
       </section>
 
