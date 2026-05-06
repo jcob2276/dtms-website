@@ -29,7 +29,6 @@ Strona jest zbudowana jako **Single Page Application (SPA)**, co oznacza, że po
 ### C. System Analityczny (Conversion Tracking)
 - **`trackPhoneClick`:** Funkcja podpięta pod każdy link `tel:`. Wysyła zdarzenie `phone_click` do GTM i wyzwala `gtag_report_conversion` dla Google Ads.
 - **Web3Forms Integration:** Formularz kontaktowy przesyła dane do API, a po sukcesie wysyła zdarzenie `form_submit`.
-- **Speculation Rules API:** (Wdrożone!) Skrypt w `index.html`, który nakazuje przeglądarce pre-renderowanie stron w tle. **Efekt: ładowanie stron w 0ms.**
 
 ### D. UI Components (Inwentarz)
 - **GoogleReviewSlider:** Moduł pobierający i wyświetlający opinie w karuzeli 480px.
