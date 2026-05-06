@@ -36,7 +36,7 @@ Nowoczesna platforma typu Single Page Application (SPA) dla ośrodka szkoleniowe
 ## 6. Infrastruktura i Deployment
 - **.htaccess:** Skonfigurowany pod SPA (routing fallback do index.html), kompresję Gzip oraz wymuszanie HTTPS.
 - **Sitemap:** Automatyczny generator (`sitemap_generator.js`) uwzględniający wszystkie miasta i języki.
-- **Build Process:** `npm run build` -> manualny upload folderu `dist` na FTP.
+- **Build Process:** **Automatyczny (CI/CD)**. Każdy `git push origin main` wyzwala GitHub Action, która buduje projekt i przesyła go na serwer LH.PL. Manualny upload nie jest już wymagany.
 
 ## 7. Kontakt Techniczny
 Dostęp do kodu źródłowego: `GitHub - jcob2276/stronaDTMS`
