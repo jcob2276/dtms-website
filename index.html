@@ -55,6 +55,22 @@
     </script>
 
 
+    <!-- Speculation Rules API - Instant Page Loads -->
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/", "/uslugi", "/polityka-prywatnosci"]
+        },
+        {
+          "where": { "href_matches": "/kursy-udt-*" },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+    </script>
+
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
