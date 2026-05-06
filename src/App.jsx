@@ -1188,7 +1188,7 @@ const Home = ({ city }) => {
       </section>
 
       <section className="section section-dark-premium py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/10 to-transparent"></div>
+
 
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center text-left">
