@@ -1,18 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://szkoleniadtms.pl/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <priority>1.0</priority>
+    <loc>https://szkoleniadtms.pl</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl" />
   </url>
   <url>
     <loc>https://szkoleniadtms.pl/uslugi</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/uslugi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/uslugi?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/uslugi?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/uslugi" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/uslugi?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/uslugi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/uslugi?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/uslugi?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/uslugi" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/uslugi?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/uslugi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/uslugi?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/uslugi?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/uslugi" />
   </url>
   <url>
     <loc>https://szkoleniadtms.pl/polityka-prywatnosci</loc>
-    <lastmod>2026-05-05</lastmod>
-    <priority>0.3</priority>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/polityka-prywatnosci?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/polityka-prywatnosci?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/polityka-prywatnosci?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/polityka-prywatnosci" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-krosno</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-krosno?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-krosno?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-krosno?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-krosno" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-jaslo</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-jaslo?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-jaslo?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-jaslo?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-jaslo" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-sanok</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-sanok?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-sanok?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-sanok?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-sanok" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-rzeszow</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-rzeszow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-rzeszow" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-gorlice</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-gorlice?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-gorlice?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-gorlice?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-gorlice" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-brzozow</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-brzozow?lang=en</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
+  </url>
+  <url>
+    <loc>https://szkoleniadtms.pl/kursy-udt-brzozow?lang=ua</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ua" href="https://szkoleniadtms.pl/kursy-udt-brzozow?lang=ua" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://szkoleniadtms.pl/kursy-udt-brzozow" />
   </url>
 </urlset>

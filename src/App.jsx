@@ -223,6 +223,21 @@ const LanguageProvider = ({ children }) => {
 
 const useTranslation = () => useContext(LanguageContext);
 
+// --- Conversion Tracking ---
+const trackPhoneClick = () => {
+  if (window.dataLayer) {
+    window.dataLayer.push({
+      event: 'phone_click',
+      event_category: 'Conversion',
+      event_label: 'Call Button'
+    });
+  }
+  if (typeof window.gtag_report_conversion === 'function') {
+    window.gtag_report_conversion();
+  }
+  console.log('[Analytics] Phone Click Tracked');
+};
+
 // --- Advanced Production Helpers ---
 
 // 1. Error Boundary - zapobiega "białemu ekranowi śmierci"
@@ -374,10 +389,16 @@ const GoogleReviewSlider = () => {
 
 // 1.5. Structured Data (JSON-LD) for SEO
 const StructuredData = () => {
+  const { lang } = useTranslation();
+  const location = useLocation();
+  
+  // Detect current city for Local SEO boost
+  const cityMatch = SUPPORTED_CITIES.find(c => location.pathname.includes(`kursy-udt-${c.id}`));
+
   const businessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "DTMS Szkolenia Techniczne",
+    "name": cityMatch ? `DTMS Szkolenia UDT - ${cityMatch.name}` : "DTMS Szkolenia Techniczne Krosno",
     "image": "https://szkoleniadtms.pl/obrazy/logo%20bia%C5%82e%20.png",
     "@id": "https://szkoleniadtms.pl",
     "url": "https://szkoleniadtms.pl",
@@ -386,7 +407,7 @@ const StructuredData = () => {
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Ignacego Łukasiewicza 63",
-      "addressLocality": "Krosno",
+      "addressLocality": cityMatch ? cityMatch.name : "Krosno",
       "postalCode": "38-400",
       "addressCountry": "PL"
     },
@@ -404,7 +425,11 @@ const StructuredData = () => {
     "sameAs": [
       "https://www.facebook.com/Szkoleniadtms/"
     ],
-    "areaServed": SERVICE_REGIONS.map(region => ({
+    "areaServed": cityMatch ? [
+      { "@type": "AdministrativeArea", "name": cityMatch.name },
+      { "@type": "AdministrativeArea", "name": "Krosno" },
+      { "@type": "AdministrativeArea", "name": "Podkarpackie" }
+    ] : SERVICE_REGIONS.map(region => ({
       "@type": "AdministrativeArea",
       "name": region.name
     })).concat(ZIP_CODES.map(zip => ({
@@ -417,8 +442,8 @@ const StructuredData = () => {
   const courseSchemas = DETAILED_SERVICES.map(s => ({
     "@context": "https://schema.org",
     "@type": "Course",
-    "name": s.title.pl,
-    "description": s.summary.pl,
+    "name": s.title[lang] || s.title.pl,
+    "description": s.summary[lang] || s.summary.pl,
     "provider": {
       "@type": "Organization",
       "name": "DTMS Szkolenia Techniczne",
@@ -481,7 +506,13 @@ const PageManager = () => {
         en: `UDT Training ${cityMatch.name} - Forklift & Crane Courses | DTMS`,
         ua: `Навчання UDT ${cityMatch.name} - Курси на навантажувачі | DTMS`
       };
+      const cityDesc = {
+        pl: `Profesjonalne szkolenia UDT dla mieszkańców miasta ${cityMatch.name}. Kursy na wózki widłowe, HDS i podesty. Dojazd do naszego ośrodka to tylko ${cityMatch.distance} km!`,
+        en: `Professional UDT training for residents of ${cityMatch.name}. Forklift, HDS and platform courses. Only ${cityMatch.distance} km from you!`,
+        ua: `Професійне навчання UDT для жителів міста ${cityMatch.name}. Курси на навантажувачі, HDS та підйомники. Всього ${cityMatch.distance} км від вас!`
+      };
       title = cityTitle[lang] || cityTitle.pl;
+      updateMeta('description', cityDesc[lang] || cityDesc.pl);
     } else if (path === '/uslugi') {
       const titles = { pl: 'Oferta Szkoleń UDT - Wózki, Suwnice, HDS | DTMS Krosno', en: 'UDT Training Offer - Forklifts, Cranes | DTMS Krosno', ua: 'Пропозиція навчання UDT - Навантажувачі, Крани | DTMS Кросно' };
       title = titles[lang] || titles.pl;
@@ -827,7 +858,7 @@ const FloatingContact = () => {
   return (
     <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 flex flex-col gap-4 z-[2000] items-end">
       <AnimatePresence>{showScrollTop && <motion.button initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center text-primary border border-slate-100 hover:bg-slate-50 transition-colors"><ArrowUp size={24} /></motion.button>}</AnimatePresence>
-      <a href="tel:667677912" className="w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-white bg-accent hover:scale-110 transition-all duration-300">
+      <a href="tel:667677912" onClick={trackPhoneClick} className="w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-white bg-accent hover:scale-110 transition-all duration-300">
         <Phone size={32} />
       </a>
     </div>
@@ -851,7 +882,7 @@ const Navbar = ({ mobileMenu, setMobileMenu, handleContactClick }) => {
             <MonitorPlay size={18} className="text-accent group-hover:scale-110 transition-transform" />
             <span className="text-sm font-bold uppercase tracking-tight">{t('nav_elearning')}</span>
           </a>
-          <a href="tel:667677912" className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
+          <a href="tel:667677912" onClick={trackPhoneClick} className="btn-phone-v4"><Phone size={18} /> 667 677 912</a>
           <LanguageSwitcher />
         </div>
         <div className="lg:hidden flex items-center gap-4">
@@ -886,6 +917,9 @@ const ContactSection = () => {
 
       const data = await response.json();
       if (data.success) {
+        if (window.dataLayer) {
+          window.dataLayer.push({ event: 'form_submit' });
+        }
         setSubmitStatus('success');
         e.target.reset();
         // Track conversion in Google Ads
@@ -961,7 +995,7 @@ const ContactSection = () => {
           </div>
           <div className="flex flex-col gap-8">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="contact-card-premium"><Phone className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">{t('label_phone')}</p><a href="tel:667677912" className="text-2xl font-black block text-white">667 677 912</a></div>
+              <div className="contact-card-premium"><Phone className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">{t('label_phone')}</p><a href="tel:667677912" onClick={trackPhoneClick} className="text-2xl font-black block text-white">667 677 912</a></div>
               <div className="contact-card-premium"><Mail className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">{t('label_email')}</p><a href="mailto:fhudtms@poczta.fm" className="text-lg font-black block truncate text-white">fhudtms@poczta.fm</a></div>
             </div>
             <div className="map-container-premium relative">
@@ -999,7 +1033,7 @@ const Home = ({ city }) => {
   return (
     <div>
       <section className="hero-v4">
-        <img src="/obrazy/sekcja hero.jpeg" className="hero-v4-bg" alt="" />
+        <img src="/obrazy/sekcja hero.jpeg" className="hero-v4-bg" alt="Szkolenia UDT Krosno" fetchpriority="high" />
         <div className="hero-v4-overlay"></div>
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -1035,7 +1069,7 @@ const Home = ({ city }) => {
               </p>
 
               <div className="flex flex-row flex-wrap gap-4 mb-12">
-                <a href="tel:667677912" className="btn-primary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_enroll')} <ArrowRight size={20} /></a>
+                <a href="tel:667677912" onClick={trackPhoneClick} className="btn-primary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_enroll')} <ArrowRight size={20} /></a>
                 <a href="#oferta" className="btn-secondary px-6 py-3 relative z-50 cursor-pointer text-base">{t('hero_btn_offer')}</a>
               </div>
             </motion.div>
@@ -1130,7 +1164,7 @@ const Home = ({ city }) => {
                 ))}
               </div>
 
-              <a href="tel:667677912" className="btn-primary px-12 py-5 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform inline-flex mb-10 lg:mb-0">
+              <a href="tel:667677912" onClick={trackPhoneClick} className="btn-primary px-12 py-5 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform inline-flex mb-10 lg:mb-0">
                 <Phone size={20} />
                 <span className="text-primary font-black">{t('fire_btn')}</span>
               </a>
@@ -1460,16 +1494,13 @@ const AppContent = () => {
       }
     }
   }
-
   return (
     <div className="relative overflow-x-hidden">
       <Navbar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} handleContactClick={handleContactClick} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/uslugi" element={<ServicesPage />} />
-        {SUPPORTED_CITIES.map(city => (
-          <Route key={city.id} path={`/kursy-udt-${city.id}`} element={<Home city={city} />} />
-        ))}
+        <Route path="/kursy-udt-:cityId" element={<Home />} />
         <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -1542,7 +1573,7 @@ const AppContent = () => {
               </div>
 
               <div className="p-8 bg-slate-950/50 border-t border-white/5 mt-auto">
-                <a href="tel:667677912" className="btn-primary w-full justify-center py-5 text-lg shadow-xl shadow-accent/20" style={{ background: '#2563EB', color: 'white' }}>
+                <a href="tel:667677912" onClick={trackPhoneClick} className="btn-primary w-full justify-center py-5 text-lg shadow-xl shadow-accent/20" style={{ background: '#2563EB', color: 'white' }}>
                   <Phone size={20} /> {t('nav_call')}: 667 677 912
                 </a>
               </div>

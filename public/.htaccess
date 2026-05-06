@@ -3,21 +3,15 @@
   RewriteBase /
   
   # 1. Wymuszanie HTTPS (bezpieczeństwo i SEO)
-  RewriteCond % {HTTPS} off
+  RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 2. Usuwanie trailingslash (opcjonalnie, dla spójności URL)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-  # 3. Przekierowania 301 ze starej strony
-  Redirect 301 /kontakt /
-  Redirect 301 /kontakt/ /
-
-  # 3. Obsługa statycznie wygenerowanych plików (SSG)
-  # Jeśli plik .html istnieje, serwuj go bezpośrednio
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  # 3. Przekierowanie starych linków AMP (z WordPressa) na główną
+  RewriteRule ^amp(/.*)?$ / [L,R=301]
 
   # 4. Fallback dla React Router (SPA)
   # Jeśli ścieżka nie jest fizycznym plikiem ani folderem, kieruj na index.html
@@ -26,20 +20,16 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
-# 5. Optymalizacja wydajności (Kompresja Gzip)
+# 4. Optymalizacja wydajności (Kompresja Gzip)
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
 
-# 6. Cache-Control (SEO i szybkość)
+# 5. Cache-Control (SEO i szybkość)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule>

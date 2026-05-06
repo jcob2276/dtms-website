@@ -2,8 +2,12 @@
  * Sitemap Generator for DTMS
  * Run with: node sitemap_generator.js
  */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://szkoleniadtms.pl';
 const LANGUAGES = ['pl', 'en', 'ua'];

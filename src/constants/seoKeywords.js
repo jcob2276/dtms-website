@@ -1,47 +1,48 @@
 export const HIDDEN_SEMANTICS = {
   global: [
-    "Szkoła zawodowa",
-    "Ośrodek szkolenia kierowców zawodowych",
-    "Usługi inżynieryjne",
-    "Centrum kształcenia ustawicznego",
-    "Szkolenia techniczne UDT",
-    "BHP i certyfikacja",
-    "Egzaminy państwowe UDT",
-    "Kwalifikacje zawodowe",
-    "Kursy zawodowe Krosno",
-    "Obsługa urządzeń transportu bliskiego"
+    "Szkolenia techniczne UDT Krosno",
+    "Kursy zawodowe Podkarpacie",
+    "Uprawnienia państwowe UDT",
+    "Egzaminy UDT Krosno",
+    "Certyfikowane szkolenia operatorów",
+    "DTMS Krosno",
+    "Szkoła zawodowa Krosno",
+    "Kursy UDT Jasło Sanok Brzozów"
   ],
   categories: {
     wozki: [
-      "Logistyka magazynowa",
-      "Operator wózków jezdniowych",
-      "Magazynier z uprawnieniami",
-      "Wymiana butli gazowych LPG",
-      "Bezpieczeństwo w transporcie wewnętrznym"
+      "Kurs na wózki widłowe Krosno",
+      "Wózki jezdniowe specjalizowane I WJO",
+      "Ładowarki teleskopowe szkolenie",
+      "Wózki unoszące i platformowe",
+      "Wymiana butli gazowych LPG"
     ],
     podesty: [
-      "Prace na wysokościach",
-      "Podnośniki koszowe i nożycowe",
-      "Zwyżki samojezdne",
-      "Bezpieczeństwo prac wysokościowych"
+      "Kurs na zwyżki Krosno",
+      "Podesty ruchome przejezdne szkolenie",
+      "Zwyżki i nożycówki uprawnienia",
+      "Podnośniki koszowe operator"
     ],
     zurawie: [
-      "Budownictwo ciężkie",
-      "HDS i żurawie przeładunkowe",
-      "Operator żurawi wieżowych",
-      "Transport bliski materiałów sypkich"
+      "Kurs HDS Krosno",
+      "Żurawie wieżowe i samojezdne",
+      "Dźwigi budowlane i towarowe",
+      "Wyciągi towarowe i windy",
+      "Żurawie stacjonarne warsztatowe"
     ],
     suwnice: [
-      "Przemysł ciężki i produkcja",
-      "Operator suwnic sterowanych z poziomu roboczego",
-      "Haki i zawiesia",
-      "Transport wewnątrzzakładowy"
+      "Operator suwnic Krosno",
+      "Szkolenie hakowy sygnalista",
+      "Wciągniki i wciągarki UDT",
+      "Zapinacz hakowy kurs"
     ],
     napelnianie: [
-      "Gazy techniczne i skroplone",
-      "Napełnianie butli ODO",
-      "Straż Pożarna szkolenia",
-      "Certyfikacja zbiorników ciśnieniowych"
+      "Napełnianie butli gazami Krosno",
+      "Uprawnienia ODO Straż Pożarna",
+      "Napełnianie butli nurkowych",
+      "Gazy techniczne i skroplone kurs"
     ]
   }
 };
+
+
