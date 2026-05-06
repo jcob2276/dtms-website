@@ -841,9 +841,10 @@ const Navbar = ({ mobileMenu, setMobileMenu, handleContactClick }) => {
   return (
     <nav className="nav-master">
       <div className="container nav-container">
-        <Link to="/" className="logo-group"><img src="/obrazy/logo białe .png" alt="DTMS Logo" /><div className="logo-text"><span className="text-white">DTMS</span><span className="text-accent">SZKOLENIA TECHNICZNE</span></div></Link>
+        <Link to="/" className="logo-group">
+          <img src="/obrazy/logo białe .png" alt="DTMS Logo" />
+        </Link>
         <div className="nav-links-v4 hidden lg:flex">
-          <Link to="/" className={`nav-link-v4 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}>{t('nav_start')}</Link>
           <Link to="/uslugi" className={`nav-link-v4 ${location.pathname === '/uslugi' ? 'active' : ''}`}>{t('nav_services')}</Link>
           <a href="#kontakt" onClick={handleContactClick} className={`nav-link-v4 ${location.hash === '#kontakt' ? 'active' : ''}`}>{t('nav_contact') || 'Kontakt'}</a>
           <a href="https://szkoleniadtms.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-elearning group">
@@ -1510,7 +1511,6 @@ const AppContent = () => {
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-6">Nawigacja</p>
                   <div className="flex flex-col gap-3">
                     {[
-                      { to: "/", label: t('nav_start') },
                       { to: "/uslugi", label: t('nav_services') },
                       { to: "#kontakt", label: t('nav_contact'), onClick: handleContactClick }
                     ].map((item, i) => (
