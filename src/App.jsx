@@ -370,6 +370,71 @@ const GoogleReviewSlider = () => {
   );
 };
 
+const CertificationSection = () => {
+  const { lang, t } = useTranslation();
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="container">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary font-black text-[10px] mb-6 uppercase tracking-widest">
+              <Award size={12} className="text-accent" />
+              <span>Certyfikowany Ośrodek Szkoleniowy</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 tracking-tight">
+              {lang === 'pl' && <>Potwierdzona <span className="text-accent">Jakość</span> Szkoleń</>}
+              {lang === 'en' && <>Certified <span className="text-accent">Quality</span> of Training</>}
+              {lang === 'ua' && <>Підтверджена <span className="text-accent">якість</span> навчання</>}
+            </h2>
+            <p className="text-slate-600 text-xl leading-relaxed mb-10 font-medium">
+              {lang === 'pl' && "Posiadamy certyfikat ISO oraz uprawnienia do prowadzenia szkoleń technicznych na najwyższym poziomie. Nasza kadra to doświadczeni instruktorzy z wieloletnim stażem."}
+              {lang === 'en' && "We hold ISO certification and authorization to conduct technical training at the highest level. Our staff consists of experienced instructors with years of practice."}
+              {lang === 'ua' && "Ми маємо сертифікат ISO та дозвіл на проведення технічного навчання на найвищому рівні. Наш персонал — це досвідчені інструктори з багаторічним стажем."}
+            </p>
+            <div className="flex flex-col gap-4">
+              {[
+                { pl: "Certyfikat Jakości ISO", en: "ISO Quality Certificate", ua: "Сертифікат якості ISO" },
+                { pl: "Akredytacja UDT", en: "UDT Accreditation", ua: "Акредитація UDT" },
+                { pl: "Znak Jakości Małopolskich Usług Edukacyjnych", en: "Educational Quality Mark", ua: "Знак якості освітніх послуг" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                    <CheckCircle2 size={20} />
+                  </div>
+                  <span className="font-black text-primary text-lg">{item[lang] || item.pl}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full"></div>
+            <div className="relative p-4 bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 transform hover:rotate-1 transition-transform duration-500">
+              <img 
+                src="/obrazy/certyfikat.jpg" 
+                alt="Certyfikat DTMS" 
+                className="w-full h-auto rounded-[2rem] shadow-inner"
+              />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-full flex items-center justify-center border-8 border-white shadow-xl">
+                <Award size={48} className="text-accent" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // 1.5. Structured Data (JSON-LD) for SEO
 const StructuredData = () => {
   const businessSchema = {
@@ -1171,6 +1236,7 @@ const Home = ({ city }) => {
       </section>
 
       <GoogleReviewSlider />
+      <CertificationSection />
       <ServiceArea />
       <ContactSection />
     </div>
