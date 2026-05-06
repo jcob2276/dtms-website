@@ -731,7 +731,7 @@ const DETAILED_SERVICES = [
   { 
     id: "napelnianie-sprezone", 
     title: { pl: "Napełnianie butli gazami sprężonymi", en: "Filling compressed gas cylinders", ua: "Наповнення балонів стисненим газом" }, 
-    img: "/obrazy/butlesprez.png", 
+    img: "/obrazy/gutlehazy.png", 
     summary: { pl: "Napełnianie butli do oddychania, nurkowych i technicznych.", en: "Filling breathing, diving, and technical gas cylinders.", ua: "Наповнення дихальних, водолазних та технічних балонів." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami sprężonymi. Uprawnienia obejmują również butle do oddychania: używane do nurkowania, w straży pożarnej itp."),
@@ -743,7 +743,7 @@ const DETAILED_SERVICES = [
   { 
     id: "napelnianie-skroplone", 
     title: { pl: "Napełnianie butli gazami skroplonymi", en: "Filling liquefied gas cylinders", ua: "Наповнення балонів скрапленим газом" }, 
-    img: "/obrazy/gutlehazy.png", 
+    img: "/obrazy/butlesprez.png", 
     summary: { pl: "Napełnianie butli metodą przelewowo-wagową, w tym odzysk z klimatyzacji i LPG.", en: "Filling cylinders using the overflow weighing method, including recovery from air conditioning and LPG.", ua: "Наповнення балонів методом переливу та зважування, включаючи рекуперацію з кондиціонерів та LPG." },
     desc: {
       pl: fixOrphans("Szkolenie obejmuje bezpieczną obsługę, eksploatację oraz procedurę napełniania butli, zbiorników ciśnieniowych gazami skroplonymi metodą przelewowo-wagową. Uprawnienia obejmują również butle do odzysku i napełniania klimatyzacji, LPG itp."),
