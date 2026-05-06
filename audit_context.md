@@ -61,13 +61,13 @@ Strona jest zbudowana jako **Single Page Application (SPA)**, co oznacza, że po
 - **Zadanie:** Dodanie `manifest.json`.
 - **Cel:** Ikona DTMS na pulpicie telefonu użytkownika.
 
-### KROK 2: FAQ Schema
+### KROK 2: Skeleton Loaders (Wdrożone!)
+- **Zadanie:** Implementacja "szkieletów" zamiast loading spinnerów w sekcji Oferta.
+- **Cel:** Jeszcze wyższe postrzeganie szybkości (Perceived Performance).
+
+### KROK 3: FAQ Schema
 - **Zadanie:** Dodanie sekcji pytań i odpowiedzi na podstronach.
 - **Cel:** Zabranie 2x więcej miejsca w wynikach wyszukiwania Google.
-
-### KROK 3: Skeleton Loaders
-- **Zadanie:** Implementacja "szkieletów" zamiast loading spinnerów.
-- **Cel:** Jeszcze wyższe postrzeganie szybkości (Perceived Performance).
 
 ### KROK 4: WhatsApp Integration
 - **Zadanie:** Dodanie pływającego przycisku czatu.
