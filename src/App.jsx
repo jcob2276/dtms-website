@@ -1138,7 +1138,7 @@ const Home = ({ city }) => {
             >
               <div className="hero-glass-card">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
+                  <div className="w-10 h-10 bg-yellow-400/20 rounded-xl flex items-center justify-center text-yellow-400">
                     <Calendar size={24} />
                   </div>
                   <h3 className="text-2xl font-black text-white">{t('hero_next_courses')}</h3>

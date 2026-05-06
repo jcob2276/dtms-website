@@ -239,6 +239,8 @@ h1, h2, h3, h4 {
 .bg-emerald-500 { background: #10b981 !important; }
 .bg-emerald-600:hover { background: #059669 !important; }
 .bg-white\/90 { background: rgba(255, 255, 255, 0.9) !important; }
+.bg-yellow-400\/20 { background: rgba(250, 204, 21, 0.2) !important; }
+.text-yellow-400 { color: #FACC15 !important; }
 .bg-slate-950 { background: var(--slate-950) !important; }
 .bg-slate-950\/80 { background: rgba(2, 6, 23, 0.8) !important; }
 .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
@@ -531,6 +533,12 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(255, 255, 255, 0.03);
   border-radius: 100px;
   transition: var(--transition);
+}
+
+.upcoming-item-v4 span:last-child {
+  color: #FACC15 !important;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
 }
 
 .upcoming-item-v4:hover {
