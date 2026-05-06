@@ -960,6 +960,43 @@ const Navbar = () => {
 
 const ContactSection = () => {
   const { t, lang } = useTranslation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error' or null
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.target);
+    formData.append("access_key", "1f273a7c-1c6f-47f0-a631-689255b2dca1");
+    formData.append("subject", `Nowa wiadomość ze strony DTMS - ${formData.get('course') || 'Kontakt ogólny'}`);
+    formData.append("from_name", "DTMS Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubmitStatus('success');
+        e.target.reset();
+        // Track conversion in Google Ads
+        if (typeof window.gtag_report_conversion === 'function') {
+          window.gtag_report_conversion();
+        }
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="section bg-white scroll-mt-32" id="kontakt">
       <div className="container">
@@ -974,18 +1011,47 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="bg-slate-50 p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-100">
             <h3 className="text-3xl font-black mb-8 text-primary">{t('contact_form_title')}</h3>
-            <form className="flex flex-col gap-4">
+            
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder={t('contact_form_name')} className="input-v4" required />
-                <input type="tel" placeholder={t('contact_form_phone')} className="input-v4" required />
+                <input type="text" name="name" placeholder={t('contact_form_name')} className="input-v4" required />
+                <input type="tel" name="phone" placeholder={t('contact_form_phone')} className="input-v4" required />
               </div>
-              <input type="email" placeholder={t('contact_form_email')} className="input-v4" required />
-              <select className="input-v4">
-                <option>{t('contact_form_course')}</option>
-                {DETAILED_SERVICES.map(s => <option key={s.id}>{s.title[lang] || s.title.pl}</option>)}
+              <input type="email" name="email" placeholder={t('contact_form_email')} className="input-v4" required />
+              <select name="course" className="input-v4">
+                <option value="">{t('contact_form_course')}</option>
+                {DETAILED_SERVICES.map(s => <option key={s.id} value={s.title.pl}>{s.title[lang] || s.title.pl}</option>)}
               </select>
-              <textarea placeholder={t('contact_form_msg')} className="input-v4 min-h-[150px]" required></textarea>
-              <button type="submit" className="btn-primary w-full justify-center">{t('contact_form_send')} <Send size={18} /></button>
+              <textarea name="message" placeholder={t('contact_form_msg')} className="input-v4 min-h-[150px]" required></textarea>
+              
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className={`btn-primary w-full justify-center ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                {isSubmitting ? 'Wysyłanie...' : <>{t('contact_form_send')} <Send size={18} /></>}
+              </button>
+
+              <AnimatePresence>
+                {submitStatus === 'success' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    className="p-4 bg-emerald-50 text-emerald-700 rounded-2xl border border-emerald-100 font-bold text-center"
+                  >
+                    Wiadomość została wysłana pomyślnie! Odezwiemy się niebawem.
+                  </motion.div>
+                )}
+                {submitStatus === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    className="p-4 bg-red-50 text-red-700 rounded-2xl border border-red-100 font-bold text-center"
+                  >
+                    Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub zadzwoń do nas.
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </form>
           </div>
           <div className="flex flex-col gap-8">
@@ -993,12 +1059,18 @@ const ContactSection = () => {
               <div className="contact-card-premium"><Phone className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">{t('label_phone')}</p><a href="tel:667677912" className="text-2xl font-black block text-white">667 677 912</a></div>
               <div className="contact-card-premium"><Mail className="text-accent mb-6" size={32} /><p className="text-xs uppercase font-bold opacity-60 mb-2 text-white">{t('label_email')}</p><a href="mailto:fhudtms@poczta.fm" className="text-lg font-black block truncate text-white">fhudtms@poczta.fm</a></div>
             </div>
-            <div className="map-container-premium relative"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.643033575641!2d21.75895781570119!3d49.68233777937762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473c4f743419082f%3A0xc3b83b3e6c38703a!2sIgnacego%20%C5%81ukasiewicza%2063%2C%2038-400%20Krosno!5e0!3m2!1spl!2spl!4v1664221000000!5m2!1spl!2spl" className="w-full h-full border-0" allowFullScreen="" loading="lazy"></iframe><div className="absolute top-6 left-6 p-5 bg-white/90 backdrop-blur rounded-2xl shadow-xl border border-white/20 max-w-[240px]"><div className="flex items-center gap-2 mb-2"><MapPin className="text-accent" size={16} /><span className="text-xs font-black text-primary uppercase tracking-wider">{t('label_location')}</span></div><p className="text-sm text-slate-700 font-medium leading-relaxed">ul. Ignacego Łukasiewicza 63, 38-400 Krosno</p></div></div>
+            <div className="map-container-premium relative">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586.643033575641!2d21.75895781570119!3d49.68233777937762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473c4f743419082f%3A0xc3b83b3e6c38703a!2sIgnacego%20%C5%81ukasiewicza%2063%2C%2038-400%20Krosno!5e0!3m2!1spl!2spl!4v1664221000000!5m2!1spl!2spl" className="w-full h-full border-0" allowFullScreen="" loading="lazy"></iframe>
+              <div className="absolute top-6 left-6 p-5 bg-white/90 backdrop-blur rounded-2xl shadow-xl border border-white/20 max-w-[240px]">
+                <div className="flex items-center gap-2 mb-2"><MapPin className="text-accent" size={16} /><span className="text-xs font-black text-primary uppercase tracking-wider">{t('label_location')}</span></div>
+                <p className="text-sm text-slate-700 font-medium leading-relaxed">ul. Ignacego Łukasiewicza 63, 38-400 Krosno</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 const Home = ({ city }) => {
