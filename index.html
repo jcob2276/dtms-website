@@ -54,18 +54,6 @@
       }
     </script>
 
-    <!-- Local Business Structured Data -->
-    <script>
-      fetch("https://api.localo.com/api/structured_data/1L3dK3fNXXuSYT1xgWoujTUPAzPljqYgzIDW9QfbHDw/local_business")
-      .then(response => response.json())
-      .then(data => {
-        const script = document.createElement("script");
-        script.type = "application/ld+json";
-        script.textContent = JSON.stringify(data);
-        document.head.appendChild(script);
-      })
-      .catch(err => console.error("Error loading Schema:", err));
-    </script>
 
   </head>
   <body>
