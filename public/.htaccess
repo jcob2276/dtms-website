@@ -1,35 +1,139 @@
+# ============================================
+# DTMS szkoleniadtms.pl — .htaccess
+# Konfiguracja Apache dla Next.js Static Export
+# ============================================
+
+Options -Indexes
+ServerSignature Off
+
+# ——————————————————————————————————————————
+# 1. HTTPS — Wymuszenie SSL
+# ——————————————————————————————————————————
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Wymuszenie HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Wymuszenie www (lub bez www — wybierz jedno)
+  # Usuń WWW:
+  RewriteCond %{HTTP_HOST} ^www\.szkoleniadtms\.pl [NC]
+  RewriteRule ^(.*)$ https://szkoleniadtms.pl/$1 [R=301,L]
+</IfModule>
+
+# ——————————————————————————————————————————
+# 2. PRZEKIEROWANIA LEGACY — Stare URL-e React SPA
+# ——————————————————————————————————————————
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Stary format z ?lang=en → nowe ścieżki
+  RewriteCond %{QUERY_STRING} ^lang=en$
+  RewriteRule ^$ /en? [R=301,L]
+
+  RewriteCond %{QUERY_STRING} ^lang=ua$
+  RewriteRule ^$ /ua? [R=301,L]
+
+  # Stara strona bez /pl/ prefix → /pl/
+  RewriteRule ^uslugi/?$ /pl/uslugi [R=301,L]
+  RewriteRule ^polityka-prywatnosci/?$ /pl/polityka-prywatnosci [R=301,L]
+  RewriteRule ^kursy-udt-krosno/?$ /pl/kursy-udt-krosno [R=301,L]
+  RewriteRule ^kursy-udt-jaslo/?$ /pl/kursy-udt-jaslo [R=301,L]
+  RewriteRule ^kursy-udt-sanok/?$ /pl/kursy-udt-sanok [R=301,L]
+  RewriteRule ^kursy-udt-rzeszow/?$ /pl/kursy-udt-rzeszow [R=301,L]
+  RewriteRule ^kursy-udt-gorlice/?$ /pl/kursy-udt-gorlice [R=301,L]
+  RewriteRule ^kursy-udt-brzozow/?$ /pl/kursy-udt-brzozow [R=301,L]
+</IfModule>
+
+# ——————————————————————————————————————————
+# 3. NEXT.JS STATIC EXPORT — Routing
+# ——————————————————————————————————————————
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  
-  # 1. Wymuszanie HTTPS (bezpieczeństwo i SEO)
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # 2. Usuwanie trailingslash (opcjonalnie, dla spójności URL)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)/$ /$1 [L,R=301]
+  # Serwuj istniejące pliki statyczne bezpośrednio
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-  # 3. Przekierowanie starych linków AMP (z WordPressa) na główną
-  RewriteRule ^amp(/.*)?$ / [L,R=301]
+  # Next.js — routing do pliku HTML (trailing slash support)
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)/?$ $1.html [L]
 
-  # 4. Fallback dla React Router (SPA)
-  # Jeśli ścieżka nie jest fizycznym plikiem ani folderem, kieruj na index.html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  # Fallback — strona główna
+  RewriteRule ^ /pl/index.html [L]
 </IfModule>
 
-# 4. Optymalizacja wydajności (Kompresja Gzip)
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
-# 5. Cache-Control (SEO i szybkość)
+# ——————————————————————————————————————————
+# 4. CACHE — Nagłówki wydajności
+# ——————————————————————————————————————————
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresDefault "access plus 1 month"
+
+  # Obrazy — 1 rok
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Skrypty i style — 1 miesiąc
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+
+  # HTML — brak cache (Next.js zarządza wersjami)
   ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
+
+  # Czcionki — 1 rok
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
 </IfModule>
+
+# ——————————————————————————————————————————
+# 5. GZIP — Kompresja
+# ——————————————————————————————————————————
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# ——————————————————————————————————————————
+# 6. BEZPIECZEŃSTWO — Nagłówki HTTP
+# ——————————————————————————————————————————
+<IfModule mod_headers.c>
+  # Ochrona przed clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Ochrona przed XSS
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Wymuś HTTPS (HSTS) — 1 rok
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Zapobiegaj MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer Policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ——————————————————————————————————————————
+# 7. BŁĘDY — Strony błędów
+# ——————————————————————————————————————————
+ErrorDocument 404 /pl/index.html
+ErrorDocument 500 /pl/index.html

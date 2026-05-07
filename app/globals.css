@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  --color-accent: #2563EB;
+  --color-accent-light: #3B82F6;
+  --color-success: #10B981;
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
+
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --max-width: 1400px;
+  --transition-premium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    @apply bg-white text-slate-900 leading-relaxed overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply leading-tight tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1400px] mx-auto px-8;
+  }
+
+  .section {
+    @apply py-32;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Custom Utilities from Legacy */
+.section-dark-premium {
+  @apply bg-[#020617] text-white;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-3 px-10 py-5 bg-blue-600 text-white rounded-full font-black text-lg transition-all duration-300 shadow-xl shadow-blue-600/40 hover:bg-blue-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-600/50;
+}
+
+.offer-card {
+  @apply relative block h-80 rounded-[2.5rem] overflow-hidden cursor-pointer border-2 border-transparent transition-all duration-400 shadow-xl hover:border-blue-600 hover:-translate-y-1 hover:shadow-2xl;
+}
+
+.offer-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-[#0F172A]/95 via-[#0F172A]/50 to-transparent flex flex-col justify-end p-8 z-10;
+}
