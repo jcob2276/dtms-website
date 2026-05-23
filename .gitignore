@@ -33,9 +33,17 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# secrets & local tooling
+credentials.json
+oauth_credentials.json
+token.json
+
+# dev logs & scratch files
+*.log
+LOCAL_HEATMAP_*.json
+operator-*.html
+.claude/

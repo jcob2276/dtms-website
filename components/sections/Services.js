@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { DETAILED_SERVICES } from '@/lib/data';
 
 export default function Services({ dict, lang }) {
-  const homeServices = DETAILED_SERVICES;
+  // Filter out 'wciagniki-wciagarki' from the homepage grid because it's already shown 
+  // in the dedicated Fire Brigade section right below this grid.
+  const homeServices = DETAILED_SERVICES.filter(s => s.id !== 'wciagniki-wciagarki');
 
   return (
     <section className="py-12 bg-white" id="oferta">
@@ -19,7 +21,7 @@ export default function Services({ dict, lang }) {
             >
               <Image 
                 src={s.img} 
-                alt={s.title[lang] || s.title.pl} 
+                alt={`${(s.title[lang] || s.title.pl).replace('\n', ' ')} - Szkolenia UDT Krosno, Jasło, Sanok, Podkarpacie`} 
                 fill 
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

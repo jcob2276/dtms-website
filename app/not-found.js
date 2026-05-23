@@ -7,9 +7,18 @@ import { Home, ArrowLeft } from 'lucide-react';
 export default function NotFound() {
   const router = useRouter();
 
+  const getLang = () => {
+    if (typeof window === 'undefined') return 'pl';
+    const path = window.location.pathname;
+    if (path.startsWith('/en')) return 'en';
+    if (path.startsWith('/ua')) return 'ua';
+    return 'pl';
+  };
+
   useEffect(() => {
+    const lang = getLang();
     const timer = setTimeout(() => {
-      router.replace('/pl');
+      router.replace(`/${lang}`);
     }, 3000);
     return () => clearTimeout(timer);
   }, [router]);
@@ -23,7 +32,7 @@ export default function NotFound() {
         <h1 className="text-[120px] md:text-[180px] font-black text-white/5 leading-none select-none">
           404
         </h1>
-        
+
         <div className="mt-[-40px] md:mt-[-60px]">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
             Ups! Strona nie istnieje
@@ -36,15 +45,15 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link 
-              href="/pl" 
+            <Link
+              href={`/${getLang()}`}
               className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3"
             >
               <Home size={20} />
               Strona główna
             </Link>
-            
-            <button 
+
+            <button
               onClick={() => window.history.back()}
               className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3"
             >

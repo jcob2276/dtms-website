@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "start": "Home",
+    "services": "Our Services",
+    "contact": "Contact",
+    "call": "Call",
+    "elearning": "Training Platform"
+  },
+  "hero": {
+    "h1": "Professional UDT Training Krosno — Forklifts, Platforms, Cranes",
+    "h1_city": "UDT Courses",
+    "city_trust": "UDT training in {city} — we travel from Krosno (~{distance} km).",
+    "subtitle": "Get your state certification with the DTMS certified center. High pass rate and professional instructors.",
+    "title": "Professional UDT Training in Krosno",
+    "desc": "Get certified for forklifts, platforms, cranes, and hoists.",
+    "btn_enroll": "Enroll now",
+    "btn_offer": "Our Offer",
+    "upcoming": "Upcoming Courses",
+    "eu_funds": "Available with EU funding support."
+  },
+  "upcoming": {
+    "title": "Upcoming Courses",
+    "enroll": "Enrollment phone: 667 677 912",
+    "eu_funds_desc": "Available with EU funding support after meeting requirements."
+  },
+  "fire": {
+    "title": "Training for Fire Brigade",
+    "desc": "Training packages for firefighters and candidates for the State Fire Service"
+  },
+  "how": {
+    "title": "How we work",
+    "complaints": "Complaints: regarding training can be submitted in writing to: fhudtms@poczta.fm. They will be considered within 7 days.",
+    "steps": [
+      "Theoretical and practical training and exams are conducted at the client's premises or at our center using our prepared machines.",
+      "All formalities are handled on site.",
+      "As part of forklift training, each student receives additional certification for safe operation and use of gas cylinders.",
+      "We provide teaching materials and access to the training platform for theoretical classes.",
+      "The training schedule can be customized to individual needs (evenings, weekends) to avoid conflict with work and private duties.",
+      "All our training programs are approved by the Office of Technical Inspection (UDT).",
+      "Each participant receives a certificate of course completion after passing an internal exam.",
+      "The course ends with an exam before the state commission of the Office of Technical Inspection (UDT).",
+      "Training dates and prices are set individually (phone: 667 677 912, email: fhudtms@poczta.fm)."
+    ]
+  },
+  "reviews": {
+    "title": "Leave us a review"
+  },
+  "services": {
+    "title": "Our Offer",
+    "title_h1": "",
+    "desc": "Comprehensive courses preparing for UDT state exams. High pass rate and professional staff.",
+    "view_all": "View All Courses"
+  },
+  "common": {
+    "phone": "667 677 912",
+    "address": "ul. Łukasiewicza 63, 38-400 Krosno",
+    "email": "fhudtms@poczta.fm",
+    "rights": "All rights reserved.",
+    "safe_training": "Safe UDT Training",
+    "privacy": "Privacy Policy",
+    "certificates": "Certificates",
+    "links": "Links"
+  }
+}

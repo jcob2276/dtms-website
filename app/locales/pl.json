@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "start": "Start",
+    "services": "Nasze usługi",
+    "contact": "Kontakt",
+    "call": "Zadzwoń",
+    "elearning": "Platforma szkoleniowa"
+  },
+  "hero": {
+    "h1": "Profesjonalne Szkolenia UDT Krosno — Wózki Widłowe, Podesty, Suwnice",
+    "h1_city": "Kursy UDT",
+    "city_trust": "Szkolenia UDT w {city} — dojazd z Krośna (ok. {distance} km).",
+    "subtitle": "Zdobądź uprawnienia państwowe z certyfikowanym ośrodkiem DTMS. Wysoka zdawalność i profesjonalna kadra.",
+    "title": "Profesjonalne Szkolenia UDT w Krośnie",
+    "desc": "Zdobądź uprawnienia na wózki widłowe, podesty, suwnice i żurawie.",
+    "btn_enroll": "Zapisz się na kurs",
+    "btn_offer": "Nasza oferta",
+    "upcoming": "Najbliższe kursy",
+    "eu_funds": "Możliwość zrobienia kursów ze środków EU."
+  },
+  "upcoming": {
+    "title": "Najbliższe kursy",
+    "enroll": "Zapisy tel. 667 677 912",
+    "eu_funds_desc": "Możliwość zrobienia kursów ze środków EU po spełnieniu odpowiednich warunków"
+  },
+  "fire": {
+    "title": "Szkolenia dla Straży Pożarnej",
+    "desc": "Pakiety szkoleniowe dla strażaków oraz kandydatów do naboru w PSP"
+  },
+  "how": {
+    "title": "Jak działamy",
+    "complaints": "Reklamacje: dotyczące szkoleń można składać w formie pisemnej na email: fhudtms@poczta.fm. Rozpatrywane będą w ciągu 7 dni od zgłoszenia.",
+    "steps": [
+      "Szkolenia teoretyczne, praktyczne oraz egzaminy prowadzone są na terenie zakładu na urządzeniu wskazanym przez zleceniodawcę lub w naszym ośrodku na przygotowanym przez nas urządzeniu.",
+      "Wszystkie formalności załatwiane są na miejscu.",
+      "W ramach szkolenia na wózki widłowe, każdy kursant zostaje przeszkolony i otrzymuje dodatkowe zaświadczenie z zakresu bezpiecznej eksploatacji i użytkowania butli gazowej, w tym jej bezpiecznej wymiany.",
+      "Na zajęcia teoretyczne zapewniamy materiały dydaktyczne oraz dostęp do platformy szkoleniowej.",
+      "Możliwość dostosowania czasu szkolenia do indywidualnych potrzeb słuchacza tak aby nie kolidowały z obowiązkami zawodowymi i prywatnymi (wieczorowo, weekendowo).",
+      "Wszystkie nasze programy szkoleń zostały uzgodnione i uzyskały akceptację Urzędu Dozoru Technicznego.",
+      "Każdy uczestnik otrzymuje zaświadczenie o ukończeniu kursu, poprzedzone pozytywnym zaliczeniem egzaminu wewnętrznego.",
+      "Kurs kończy się egzaminem przed państwową komisją Urzędu Dozoru Technicznego.",
+      "Terminy oraz cennik szkoleń ustalane są indywidualnie w uzgodnieniu z klientem tel. 667 677 912, fhudtms@poczta.fm"
+    ]
+  },
+  "reviews": {
+    "title": "Wystaw nam opinię"
+  },
+  "services": {
+    "title": "Nasza oferta",
+    "title_h1": "",
+    "desc": "Kompleksowe kursy przygotowujące do egzaminów państwowych UDT. Wysoka zdawalność i profesjonalna kadra.",
+    "view_all": "Zobacz wszystkie szkolenia"
+  },
+  "common": {
+    "phone": "667 677 912",
+    "address": "ul. Łukasiewicza 63, 38-400 Krosno",
+    "email": "fhudtms@poczta.fm",
+    "rights": "Wszystkie prawa zastrzeżone.",
+    "safe_training": "Bezpieczne Szkolenia UDT",
+    "privacy": "Polityka prywatności",
+    "certificates": "Certyfikaty",
+    "links": "Linki"
+  }
+}

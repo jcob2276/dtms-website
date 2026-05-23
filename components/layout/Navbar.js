@@ -29,7 +29,7 @@ export default function Navbar({ dict, lang }) {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-[1000] bg-primary/95 backdrop-blur-md h-24 border-b border-white/5">
+    <nav className={`fixed top-0 w-full ${mobileMenu ? 'z-[10000]' : 'z-[1000]'} bg-primary/95 h-24 border-b border-white/5`}>
       <div className="container h-full flex justify-between items-center px-6">
         {/* Logo */}
         <Link href={`/${lang}`} className="relative h-16 w-56 transition-transform hover:scale-105">
@@ -109,29 +109,25 @@ export default function Navbar({ dict, lang }) {
 
       {/* Mobile Menu Overlay — CSS-only animation */}
       {mobileMenu && (
-        <div className="fixed inset-0 z-[9999] lg:hidden">
-          <div
-            onClick={() => setMobileMenu(false)}
-            className="absolute inset-0 bg-slate-950/98 backdrop-blur-xl animate-[fadeIn_0.2s_ease-out]"
-          />
-          <div
-            className="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-slate-950 shadow-2xl flex flex-col border-l border-white/5 animate-[slideInRight_0.25s_ease-out]"
-            style={{ animation: 'slideInRight 0.25s ease-out' }}
-          >
-            <div className="p-8 flex justify-between items-center border-b border-white/5">
-              <div className="relative h-10 w-32">
+        <div
+          className="fixed inset-0 z-[10000] lg:hidden bg-slate-950 text-white overflow-y-auto"
+          style={{ animation: 'fadeIn 0.2s ease-out', zIndex: 10000 }}
+        >
+          <div className="min-h-dvh flex flex-col">
+            <div className="h-24 px-6 flex justify-between items-center border-b border-white/10 bg-slate-950">
+              <div className="relative h-12 w-40">
                 <Image src="/obrazy/logo-biale.webp" alt="DTMS" fill className="object-contain" />
               </div>
               <button
                 onClick={() => setMobileMenu(false)}
-                className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white"
+                className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white border border-blue-500"
                 aria-label="Zamknij menu"
               >
-                <X size={24} />
+                <X size={28} />
               </button>
             </div>
 
-            <div className="p-8 flex flex-col gap-6">
+            <div className="flex-1 px-6 py-8 flex flex-col gap-4">
               {isSubpage && (
                 <Link
                   href={`/${lang}`}
@@ -171,8 +167,7 @@ export default function Navbar({ dict, lang }) {
               </a>
             </div>
 
-            {/* Language Switcher in Mobile */}
-            <div className="mt-auto p-8 border-t border-white/10 bg-white/[0.03]">
+            <div className="p-6 border-t border-white/10 bg-white/[0.03]">
               <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                 Wybierz język / Select language
               </p>

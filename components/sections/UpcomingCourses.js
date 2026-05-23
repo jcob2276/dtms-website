@@ -1,8 +1,9 @@
 'use client';
 import { Calendar, BadgeCheck, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
+
 import { UPCOMING_COURSES } from '@/lib/data';
 import { trackPhoneClick } from '@/lib/analytics';
+import { CONTACT_INFO } from '@/lib/constants/contact';
 
 export default function UpcomingCourses({ dict, lang }) {
   const courses = UPCOMING_COURSES;
@@ -23,22 +24,20 @@ export default function UpcomingCourses({ dict, lang }) {
         {/* Vertical Simple List - Using data from lib/data.js */}
         <div className="space-y-4 mb-10">
           {courses.map((course, i) => (
-            <motion.p 
+            <p 
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
               className="text-sm md:text-lg font-bold text-slate-800"
               style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
             >
               {course.name[lang] || course.name.pl} - <span className="text-blue-600">{course.date}</span>
-            </motion.p>
+            </p>
           ))}
         </div>
 
         {/* Enrollment Info */}
         <div className="flex flex-col items-center gap-6">
           <a 
-            href="tel:667677912" 
+            href={`tel:${CONTACT_INFO.phoneFull}`}
             onClick={() => trackPhoneClick('upcoming_courses')}
             className="flex items-center gap-2 text-xl md:text-2xl font-black text-slate-900 hover:text-blue-600 transition-colors"
             style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}

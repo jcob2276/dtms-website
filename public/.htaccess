@@ -53,6 +53,9 @@ ServerSignature Off
   RewriteEngine On
   RewriteBase /
 
+  # Strona główna → /pl/
+  RewriteRule ^$ /pl/ [R=301,L]
+
   # Serwuj istniejące pliki statyczne bezpośrednio
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
@@ -62,8 +65,10 @@ ServerSignature Off
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+)/?$ $1.html [L]
 
-  # Fallback — strona główna
-  RewriteRule ^ /pl/index.html [L]
+  # Nieznane ścieżki poza /pl, /en, /ua → 301 na /pl/ (zmiana URL w pasku)
+  RewriteCond %{REQUEST_URI} !^/(pl|en|ua|obrazy|_next)(/|$) [NC]
+  RewriteCond %{REQUEST_URI} !^/(favicon\.ico|robots\.txt|sitemap\.xml|manifest\.json|sw\.js|404\.html)$ [NC]
+  RewriteRule ^ /pl/ [R=301,L]
 </IfModule>
 
 # ——————————————————————————————————————————
@@ -135,5 +140,5 @@ ServerSignature Off
 # ——————————————————————————————————————————
 # 7. BŁĘDY — Strony błędów
 # ——————————————————————————————————————————
-ErrorDocument 404 /pl/index.html
-ErrorDocument 500 /pl/index.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html

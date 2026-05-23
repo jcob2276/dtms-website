@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Cookie, X, ShieldCheck, BarChart2 } from 'lucide-react';
+import { Cookie, ShieldCheck, BarChart2 } from 'lucide-react';
 import { trackCookieConsent } from '@/lib/analytics';
 
 const translations = {
@@ -61,7 +61,8 @@ export default function CookieConsent({ lang = 'pl' }) {
       }
     } catch (e) {
       console.warn('CookieConsent: localStorage access failed', e);
-      setVisible(true);
+      const timer = setTimeout(() => setVisible(true), 0);
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -93,7 +94,8 @@ export default function CookieConsent({ lang = 'pl' }) {
     <div
       role="dialog"
       aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 animate-in slide-in-from-bottom duration-500"
+      className="fixed bottom-24 left-0 right-0 z-[9999] max-h-[calc(100dvh-7rem)] overflow-y-auto p-4 md:bottom-0 md:p-6"
+      style={{ animation: 'slideUpCookie 0.4s ease-out' }}
     >
       <div className="max-w-4xl mx-auto bg-[#0F172A] border border-white/10 rounded-2xl shadow-2xl shadow-black/50 p-5 md:p-6">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
