@@ -29,7 +29,7 @@ export default function UpcomingCourses({ dict, lang }) {
                 key={i}
                 className="text-sm md:text-lg font-bold text-slate-800"
               >
-                {course.name[lang] || course.name.pl} - {dict.upcoming.start || 'początek'} <span className="text-blue-600">{course.date}</span>
+                {course.name[lang] || course.name.pl} - <span className="text-blue-600">{course.date}</span>
               </li>
             ))}
           </ul>
