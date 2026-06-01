@@ -1,18 +1,14 @@
-import pl from './locales/pl.json';
-import en from './locales/en.json';
-import ua from './locales/ua.json';
-
 export const i18n = {
   defaultLocale: 'pl',
   locales: ['pl', 'en', 'ua'],
 };
 
-const dictionaries = {
-  pl,
-  en,
-  ua,
-};
-
-export const getDictionary = (locale) => {
-  return dictionaries[locale] || dictionaries.pl;
-};
+export async function getDictionary(locale) {
+  try {
+    const dict = await import(`./locales/${locale}.json`);
+    return dict.default;
+  } catch {
+    const fallback = await import('./locales/pl.json');
+    return fallback.default;
+  }
+}

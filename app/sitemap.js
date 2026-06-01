@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
-const LAST_MODIFIED_MAIN = '2026-05-20';
-const LAST_MODIFIED_CITIES = '2026-05-20';
+const LAST_MODIFIED_MAIN = '2026-05-28';
+const LAST_MODIFIED_CITIES = '2026-05-28';
 const LAST_MODIFIED_LEGAL = '2026-05-20';
 
 export default function sitemap() {

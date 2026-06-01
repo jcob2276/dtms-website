@@ -1,12 +1,8 @@
 'use client';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Home, ArrowLeft } from 'lucide-react';
 
 export default function NotFound() {
-  const router = useRouter();
-
   const getLang = () => {
     if (typeof window === 'undefined') return 'pl';
     const path = window.location.pathname;
@@ -15,13 +11,6 @@ export default function NotFound() {
     return 'pl';
   };
 
-  useEffect(() => {
-    const lang = getLang();
-    const timer = setTimeout(() => {
-      router.replace(`/${lang}`);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [router]);
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background Decor */}
@@ -40,10 +29,6 @@ export default function NotFound() {
           <p className="text-slate-400 text-lg mb-4 max-w-md mx-auto font-medium">
             Przepraszamy, ale strona której szukasz została przeniesiona lub nigdy nie istniała.
           </p>
-          <p className="text-blue-500/50 text-sm mb-12 font-bold animate-pulse uppercase tracking-widest">
-            Automatyczne przekierowanie za 3 sekundy...
-          </p>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href={`/${getLang()}`}

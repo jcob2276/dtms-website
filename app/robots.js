@@ -1,17 +1,7 @@
 export const dynamic = 'force-static';
 
-const AI_BOTS = [
-  'GPTBot',
-  'ChatGPT-User',
-  'Google-Extended',
-  'ClaudeBot',
-  'anthropic-ai',
-  'CCBot',
-  'Bytespider',
-  'PerplexityBot',
-  'YouBot',
-  'Applebot-Extended',
-];
+// Blocked: pure scrapers with no SEO value (AI training data harvesters)
+const BLOCKED_BOTS = ['CCBot', 'Bytespider'];
 
 export default function robots() {
   return {
@@ -21,7 +11,7 @@ export default function robots() {
         allow: '/',
         disallow: ['/api/', '/_next/'],
       },
-      ...AI_BOTS.map((bot) => ({ userAgent: bot, disallow: ['/'] })),
+      ...BLOCKED_BOTS.map((bot) => ({ userAgent: bot, disallow: ['/'] })),
     ],
     sitemap: 'https://szkoleniadtms.pl/sitemap.xml',
   };

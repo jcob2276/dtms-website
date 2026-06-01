@@ -38,9 +38,13 @@ export default function Hero({ dict, lang, city }) {
         className="relative z-10 w-64 md:w-[460px] mt-28 md:mt-32 -ml-2 md:-ml-4 [animation:var(--animation-slide-right)]"
       >
         <h1 className="w-full">
+          <span className="sr-only">
+            {city ? `${dict.hero?.h1_city || "Kursy UDT"} ${city.name}` : (dict.hero?.h1 || "Profesjonalne Szkolenia UDT Krosno")}
+          </span>
           <Image
             src="/obrazy/logo-biale.webp"
-            alt={city ? `${dict.hero?.h1_city || "Kursy UDT"} ${city.name}` : (dict.hero?.h1 || "Profesjonalne Szkolenia UDT Krosno")}
+            alt=""
+            aria-hidden="true"
             width={460}
             height={230}
             className="w-full h-auto drop-shadow-2xl"
@@ -49,7 +53,7 @@ export default function Hero({ dict, lang, city }) {
           />
         </h1>
         {trustLine && (
-          <p className="mt-4 max-w-md text-sm font-bold leading-snug text-white/95 drop-shadow-lg md:text-base">
+          <p className="mt-2 max-w-md text-sm font-bold leading-snug text-white/95 drop-shadow-lg md:text-base">
             {trustLine}
           </p>
         )}

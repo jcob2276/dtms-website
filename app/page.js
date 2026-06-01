@@ -1,10 +1,21 @@
-import { redirect } from 'next/navigation';
+'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
+// Middleware is unsupported with output:'export', so language detection happens client-side.
 export default function RootPage() {
-  redirect('/pl');
-}
+  const router = useRouter();
 
-export const metadata = {
-  title: 'DTMS - Szkolenia UDT Krosno',
-  robots: { index: false, follow: false },
-};
+  useEffect(() => {
+    const lang = (navigator.language || 'pl').toLowerCase();
+    if (lang.startsWith('uk') || lang.startsWith('ru')) {
+      router.replace('/ua');
+    } else if (lang.startsWith('en')) {
+      router.replace('/en');
+    } else {
+      router.replace('/pl');
+    }
+  }, [router]);
+
+  return null;
+}

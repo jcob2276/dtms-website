@@ -21,7 +21,9 @@
   "upcoming": {
     "title": "Upcoming Courses",
     "enroll": "Enrollment phone: 667 677 912",
-    "eu_funds_desc": "Available with EU funding support after meeting requirements."
+    "eu_funds_desc": "Available with EU funding support after meeting requirements.",
+    "no_courses": "Course dates are announced as they become available — check back soon or call to find out what we have planned.",
+    "start": "start date"
   },
   "fire": {
     "title": "Training for Fire Brigade",

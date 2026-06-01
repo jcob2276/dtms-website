@@ -56,6 +56,11 @@ ServerSignature Off
   # Strona główna → /pl/
   RewriteRule ^$ /pl/ [R=301,L]
 
+  # Next.js RSC — klient żąda płaskiej ścieżki, export generuje zagnieżdżone foldery
+  RewriteRule ^(.*/?)__next\.\$d\$locale\.\__PAGE__\.txt$ $1__next.$d$locale/__PAGE__.txt [L]
+  RewriteRule ^(.*/?)__next\.\$d\$locale\.\$d\$slug\.\__PAGE__\.txt$ $1__next.$d$locale/$d$slug/__PAGE__.txt [L]
+  RewriteRule ^(.*/?)__next\.\$d\$locale\.\$d\$slug\.txt$ $1__next.$d$locale/$d$slug.txt [L]
+
   # Serwuj istniejące pliki statyczne bezpośrednio
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d

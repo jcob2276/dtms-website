@@ -21,7 +21,9 @@
   "upcoming": {
     "title": "Najbliższe kursy",
     "enroll": "Zapisy tel. 667 677 912",
-    "eu_funds_desc": "Możliwość zrobienia kursów ze środków EU po spełnieniu odpowiednich warunków"
+    "eu_funds_desc": "Możliwość zrobienia kursów ze środków EU po spełnieniu odpowiednich warunków",
+    "no_courses": "Terminy kursów podajemy na bieżąco — wróć wkrótce lub zadzwoń, żeby dowiedzieć się co planujemy.",
+    "start": "początek"
   },
   "fire": {
     "title": "Szkolenia dla Straży Pożarnej",

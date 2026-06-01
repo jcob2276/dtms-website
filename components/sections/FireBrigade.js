@@ -14,8 +14,7 @@ export default function FireBrigade({ dict, lang }) {
           <Link 
             href={`/${lang}/uslugi#wciagniki-wciagarki`}
             className="relative block h-72 rounded-[2rem] overflow-hidden group shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
-            style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
-          >
+                     >
             <Image 
               src="/obrazy/wciagnik.webp" 
               alt={hoistsTitle[lang] || hoistsTitle.pl}
@@ -37,11 +36,10 @@ export default function FireBrigade({ dict, lang }) {
           {/* Middle & Right Tile - Fire Brigade (Spans 2 columns on desktop) */}
           <div 
             className="relative block h-72 lg:col-span-2 rounded-[2rem] overflow-hidden group shadow-lg transition-all duration-500 hover:shadow-2xl"
-            style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
-          >
+                     >
             <Image 
               src="/obrazy/strazak.webp" 
-              alt="" 
+              alt="Szkolenia dla straży pożarnej — obsługa urządzeń podnośnikowych UDT"
               fill 
               className="object-cover group-hover:scale-105 transition-transform duration-700"
               sizes="(max-width: 1024px) 100vw, 66vw"

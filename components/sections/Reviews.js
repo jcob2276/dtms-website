@@ -110,8 +110,7 @@ export default function Reviews({ dict, lang }) {
             onClick={() => trackReviewClick()}
             aria-label="Wystaw opinię w Google Maps"
             className="inline-flex items-center gap-4 px-10 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-sm hover:shadow-xl hover:text-blue-600 hover:border-blue-400 transition-all group scale-110"
-            style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
-          >
+                     >
             <MessageSquarePlus size={20} className="group-hover:rotate-12 transition-transform text-blue-500" />
             {dict.reviews.title}
           </a>
@@ -205,7 +204,7 @@ function ReviewCard({ review }) {
         </div>
       </div>
 
-      <h3 className="font-bold text-slate-800 text-sm mb-0.5" style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}>
+      <h3 className="font-bold text-slate-800 text-sm mb-0.5">
         {review.name}
       </h3>
       <p className="text-[10px] text-slate-500 mb-3">{review.date}</p>

@@ -17,8 +17,7 @@ export default function Services({ dict, lang }) {
               key={i} 
               href={`/${lang}/uslugi#${s.id}`} 
               className="relative block h-72 rounded-[2rem] overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
-              style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
-            >
+                         >
               <Image 
                 src={s.img} 
                 alt={`${(s.title[lang] || s.title.pl).replace('\n', ' ')} - Szkolenia UDT Krosno, Jasło, Sanok, Podkarpacie`} 

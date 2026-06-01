@@ -8,9 +8,9 @@
   "theme_color": "#2563EB",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/obrazy/logo-biale.ico",
       "sizes": "any",
-      "type": "image/png",
+      "type": "image/x-icon",
       "purpose": "any maskable"
     }
   ]

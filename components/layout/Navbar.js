@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Menu, X, MonitorPlay, ArrowRight, Home } from 'lucide-react';
 import Image from 'next/image';
 import { trackNavClick, trackLanguageSwitch, trackPlatformClick } from '@/lib/analytics';
@@ -15,7 +15,6 @@ const locales = [
 export default function Navbar({ dict, lang }) {
   const [mobileMenu, setMobileMenu] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   const isSubpage = pathname !== `/${lang}` && pathname !== `/${lang}/`;
 
@@ -24,7 +23,7 @@ export default function Navbar({ dict, lang }) {
       trackLanguageSwitch(lang, newLang);
       const segments = pathname.split('/');
       segments[1] = newLang;
-      router.push(segments.join('/'));
+      window.location.href = segments.join('/') || `/${newLang}/`;
     }
   };
 

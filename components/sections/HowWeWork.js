@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function HowWeWork({ dict, lang }) {
@@ -9,7 +8,7 @@ export default function HowWeWork({ dict, lang }) {
     <section className="py-12 bg-slate-50">
       <div className="container max-w-4xl">
         <div className="mb-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-1" style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}>
+          <h2 className="text-2xl font-black text-slate-900 mb-1">
             {dict.how.title}
           </h2>
           <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
