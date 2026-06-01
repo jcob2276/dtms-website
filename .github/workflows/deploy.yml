@@ -24,15 +24,14 @@ jobs:
       - name: 🏗️ Build project
         run: npm run build
 
-      - name: 🚀 Sync files to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./out/
-          server-dir: /public_html/szkoleniadtms.pl/
-          dangerous-clean-slate: false
-          log-level: verbose
+      - name: 🚀 Sync files to FTP via LFTP
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+          lftp -c "
+            set ssl:verify-certificate false;
+            set net:max-retries 10;
+            set net:reconnect-interval-multiplier 2;
+            set ftp:passive-mode true;
+            open -u '${{ secrets.FTP_USERNAME }}','${{ secrets.FTP_PASSWORD }}' ${{ secrets.FTP_SERVER }};
+            mirror -R -v ./out/ /public_html/szkoleniadtms.pl/;
+          "
