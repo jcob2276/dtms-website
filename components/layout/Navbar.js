@@ -23,7 +23,7 @@ export default function Navbar({ dict, lang }) {
       trackLanguageSwitch(lang, newLang);
       const segments = pathname.split('/');
       segments[1] = newLang;
-      window.location.href = segments.join('/') || `/${newLang}/`;
+      window.location.assign(segments.join('/') || `/${newLang}/`);
     }
   };
 

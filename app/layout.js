@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" as="image" href="/obrazy/sekcja-hero-mobile.webp" media="(max-width: 768px)" fetchPriority="high" />
         <link rel="preload" as="image" href="/obrazy/sekcja-hero.webp" media="(min-width: 769px)" fetchPriority="high" />
         <script
