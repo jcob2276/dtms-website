@@ -36,14 +36,14 @@ ServerSignature Off
   RewriteRule ^$ /ua? [R=301,L]
 
   # Stara strona bez /pl/ prefix → /pl/
-  RewriteRule ^uslugi/?$ /pl/uslugi [R=301,L]
-  RewriteRule ^polityka-prywatnosci/?$ /pl/polityka-prywatnosci [R=301,L]
-  RewriteRule ^kursy-udt-krosno/?$ /pl/kursy-udt-krosno [R=301,L]
-  RewriteRule ^kursy-udt-jaslo/?$ /pl/kursy-udt-jaslo [R=301,L]
-  RewriteRule ^kursy-udt-sanok/?$ /pl/kursy-udt-sanok [R=301,L]
-  RewriteRule ^kursy-udt-rzeszow/?$ /pl/kursy-udt-rzeszow [R=301,L]
-  RewriteRule ^kursy-udt-gorlice/?$ /pl/kursy-udt-gorlice [R=301,L]
-  RewriteRule ^kursy-udt-brzozow/?$ /pl/kursy-udt-brzozow [R=301,L]
+  RewriteRule ^uslugi/?$ /pl/uslugi/ [R=301,L]
+  RewriteRule ^polityka-prywatnosci/?$ /pl/polityka-prywatnosci/ [R=301,L]
+  RewriteRule ^kursy-udt-krosno/?$ /pl/kursy-udt-krosno/ [R=301,L]
+  RewriteRule ^kursy-udt-jaslo/?$ /pl/kursy-udt-jaslo/ [R=301,L]
+  RewriteRule ^kursy-udt-sanok/?$ /pl/kursy-udt-sanok/ [R=301,L]
+  RewriteRule ^kursy-udt-rzeszow/?$ /pl/kursy-udt-rzeszow/ [R=301,L]
+  RewriteRule ^kursy-udt-gorlice/?$ /pl/kursy-udt-gorlice/ [R=301,L]
+  RewriteRule ^kursy-udt-brzozow/?$ /pl/kursy-udt-brzozow/ [R=301,L]
 </IfModule>
 
 # ——————————————————————————————————————————
